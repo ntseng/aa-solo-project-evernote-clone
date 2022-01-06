@@ -55,7 +55,10 @@ export function restoreSession() {
 }
 
 export function logout() {
-	return dispatch => {
+	return async dispatch => {
+		await csrfFetch("/api/session", {
+			method: "DELETE"
+		})
 		dispatch(clearSessionUser());
 	}
 }
