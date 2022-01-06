@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const INITIAL_STATE = {
 	user: null
 }
@@ -15,35 +17,33 @@ const clearSessionUser = () => ({
 
 export function login(credentials) {
 	return async dispatch => {
-		const response = await fetch("/api/session", {
+		const response = await csrfFetch("/api/session", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(credentials)
 		})
 
 		if (response.ok) {
-			const user = await response.json();
+			const { user } = await response.json();
 			dispatch(setSessionUser(user));
 		}
 	}
 }
 
 export function logout() {
-	return async dispatch => {
-		const response = await fetch("/api/session", {
-
-		})
+	return dispatch => {
+		dispatch(clearSessionUser());
 	}
 }
 
-export default function sessionReducer(state = initialState, action) {
+export default function sessionReducer(state = INITIAL_STATE, action) {
 	let updatedState = { ...state };
 	switch (action.type) {
 		case LOGIN:
-			updatedState[user] = action.user;
+			updatedState.user = action.user;
 			return updatedState;
 		case LOGOUT:
-			updatedState[user] = null;
+			updatedState.user = null;
 			return updatedState;
 		default:
 			return state;
