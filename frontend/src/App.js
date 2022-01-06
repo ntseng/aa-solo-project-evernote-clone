@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { restoreSession } from "./store/session";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
+import Navigation from "./components/Navigation";
 
 function App() {
 	const dispatch = useDispatch();
@@ -15,14 +16,19 @@ function App() {
 	}, [dispatch])
 
 	return isLoaded && (
-		<Switch>
-			<Route path="/login">
-				<LoginFormPage />
-			</Route>
-			<Route path="/signup">
-				<SignUpFormPage />
-			</Route>
-		</Switch>
+		<>
+			<Navigation isLoaded={isLoaded} />
+			{isLoaded && (
+				<Switch>
+					<Route path="/login">
+						<LoginFormPage />
+					</Route>
+					<Route path="/signup">
+						<SignUpFormPage />
+					</Route>
+				</Switch>
+			)}
+		</>
 	);
 }
 
