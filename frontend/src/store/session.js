@@ -9,11 +9,26 @@ const LOGOUT = "session/logout";
 const setSessionUser = user => ({
 	type: LOGIN,
 	user
-});
+})
 
 const clearSessionUser = () => ({
 	type: LOGOUT
 })
+
+export function signUp({ username, email, password }) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/users", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ username, email, password })
+		})
+
+		if (response.ok) {
+			const newUser = await response.json();
+			dispatch(setSessionUser(newUser));
+		}
+	}
+}
 
 export function login(credentials) {
 	return async dispatch => {
@@ -27,6 +42,15 @@ export function login(credentials) {
 			const { user } = await response.json();
 			dispatch(setSessionUser(user));
 		}
+	}
+}
+
+export function restoreSession() {
+	return async dispatch => {
+		const response = await csrfFetch("/api/session");
+		const { user } = await response.json();
+		dispatch(setSessionUser(user));
+		return response;
 	}
 }
 
