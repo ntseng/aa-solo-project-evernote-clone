@@ -45,6 +45,21 @@ export function login(credentials) {
 	}
 }
 
+export function demoLogin() {
+	return async dispatch => {
+		const response = await csrfFetch("/api/session", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ credential: "Demo-lition", password: "password" })
+		})
+
+		if (response.ok) {
+			const { user } = await response.json();
+			dispatch(setSessionUser(user));
+		}
+	}
+}
+
 export function restoreSession() {
 	return async dispatch => {
 		const response = await csrfFetch("/api/session");
