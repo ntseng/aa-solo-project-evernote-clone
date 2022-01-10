@@ -47,8 +47,14 @@ router.put("/", asyncHandler(async (req, res) => {
 	});
 }))
 
-// router.delete("/:id(\\d+)",asyncHandler(async (req, res) => {
+router.delete("/", asyncHandler(async (req, res) => {
+	const { noteId } = req.body;
+	const note = await Note.findByPk(noteId);
+	await note.destroy();
 
-// })
+	return res.json({
+		noteId
+	})
+}))
 
 module.exports = router;
