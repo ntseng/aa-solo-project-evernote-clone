@@ -6,7 +6,7 @@ export default function NotesEditor({ noteId }) {
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 
-	useEffect(() => { //TODO #57 Notes Page: load note values into input and textarea
+	useEffect(() => {
 		setTitle(note?.title || "");
 		setContent(note?.content || "");
 	}, [note])
