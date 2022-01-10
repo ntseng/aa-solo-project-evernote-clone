@@ -4,6 +4,7 @@ const INITIAL_STATE = { notes: {} };
 const GET_NOTES = "notes/get";
 const ADD_NOTE = "notes/add";
 const EDIT_NOTE = "notes/edit";
+const DELETE_NOTE = "notes/delete";
 
 const getNotes = notes => ({
 	type: GET_NOTES,
@@ -69,6 +70,28 @@ export function editNote({ noteId, notebookId, title, content }) {
 	}
 }
 
+const deleteNote = noteId => ({
+	type: DELETE_NOTE,
+	noteId
+})
+
+export function trashNote({ noteId }) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/notes", {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				noteId
+			})
+		})
+
+		if (response.ok) {
+			const { noteId: deletedNoteId } = await response.json();
+			dispatch(deleteNote(deletedNoteId));
+		}
+	}
+}
+
 export default function notesReducer(state = INITIAL_STATE, action) {
 	let updatedState = { ...state };
 	switch (action.type) {
@@ -80,6 +103,9 @@ export default function notesReducer(state = INITIAL_STATE, action) {
 		case ADD_NOTE:
 		case EDIT_NOTE:
 			updatedState.notes[action.note.id] = action.note;
+			return updatedState;
+		case DELETE_NOTE:
+			delete updatedState.notes[action.noteId]
 			return updatedState;
 		default:
 			return state;
