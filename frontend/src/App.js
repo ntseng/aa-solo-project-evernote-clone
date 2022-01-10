@@ -16,11 +16,12 @@ function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
 
+
 	useEffect(() => {
 		dispatch(restoreSession()).then(() => setIsLoaded(true));
 	}, [dispatch])
 
-	return isLoaded && (
+	return (
 		<>
 			{isLoaded && (
 				<Switch>
@@ -35,19 +36,19 @@ function App() {
 					<Route path="/signup">
 						<AuthContainer newAccount={true} />
 					</Route>
-					<Route exact path="/user/:id">
+					<Route exact path="/user/">
 						<UserNav />
 						<UserPage />
 					</Route>
-					<Route path="/user/:id/notes/:noteId">
-						<UserNav />
-						<NotesNav />
-						<NotesEditor />
+					<Route path="/notes/">
+						<UserNav userId={1} />
+						<NotesNav userId={1} />
+						<NotesEditor noteId={1} />
 					</Route>
 				</Switch>
 			)}
 		</>
-	);
+	)
 }
 
 export default App;

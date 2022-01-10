@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function UserNav() {
+export default function UserNav({ userId }) {
 	return (
 		<ul id="user-nav">
 			<li id="settings">
@@ -11,10 +11,10 @@ export default function UserNav() {
 			<li>Home</li>
 			<ul id="links">
 				<li>
-					<Link>Notes</Link>
+					<Link to={`/notes`}>Notes</Link>
 				</li>
 				<li>
-					<Link>Notebooks</Link>
+					<Link to={`/notebooks`}>Notebooks</Link>
 				</li>
 			</ul>
 			<button>Upgrade</button>
