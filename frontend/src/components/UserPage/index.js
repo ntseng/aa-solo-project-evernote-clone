@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
+
 export default function UserPage() {
-	let placeholder = "username"; //TODO #56 User Page: replace placeholder in greeting
+	let user = useSelector(state => state.session.user);
 	return (
-		<div>{`Good Morning, ${placeholder}!`}</div>
+		<div>{`Good Morning, ${user.username}!`}</div>
 	)
 }
