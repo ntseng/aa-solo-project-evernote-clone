@@ -33,7 +33,7 @@ export default function SignUpFormPage() {
 
 	return (
 		<>
-			<img src="/images/logo.svg" alt="logo" />
+			<img src="/images/icon.png" alt="logo" id="auth-logo"/>
 			<h1>Evernote Clone</h1>
 			<span>Remember everything important.</span>
 			<form className="signup-form"
@@ -75,7 +75,7 @@ export default function SignUpFormPage() {
 				</label>
 				<button type="submit">Continue</button>
 			</form>
-			<span>By creating an account, you are agreeing to your <Link>Terms of Service</Link> and <Link>Privacy Policy</Link>.</span>
+			<span>By creating an account, you are agreeing to your <Link to="/">Terms of Service</Link> and <Link to="/">Privacy Policy</Link>.</span>
 			<span>Already have an account?</span>
 			<Link to="/login">Sign in</Link>
 		</>
