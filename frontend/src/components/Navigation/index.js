@@ -39,7 +39,18 @@ export default function Navigation({ isLoaded }) {
 					{isLoaded && sessionLinks}
 				</div>
 			</header>
-			<div id="calendar-banner"></div>
+			<div id="calendar-banner">
+				<div className="row">
+					<div className="container clearfix">
+						<img src="/images/logo.svg" alt="calendar" />
+						<div className="content-container">
+							<h2 className="h2-banner">Save 50% on Personal!</h2>
+							<p className="cta">Button</p>
+							<p id="banner-description">Get our best-ever deal for a limited time. Ends 1/31.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</>
 	)
 }

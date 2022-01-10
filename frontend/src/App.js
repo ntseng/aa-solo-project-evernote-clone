@@ -6,6 +6,8 @@ import { restoreSession } from "./store/session";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
+import ValueProp from "./components/Landing/valueProp";
+import HeroRow from "./components/Landing/heroRow";
 
 function App() {
 	const dispatch = useDispatch();
@@ -20,6 +22,10 @@ function App() {
 			<Navigation isLoaded={isLoaded} />
 			{isLoaded && (
 				<Switch>
+					<Route exact path="/">
+						<ValueProp />
+						<HeroRow />
+					</Route>
 					<Route path="/login">
 						<LoginFormPage />
 					</Route>
