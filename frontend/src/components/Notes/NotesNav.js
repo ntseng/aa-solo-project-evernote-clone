@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getNotes } from "../../store/notes";
+import { fetchNotes } from "../../store/notes";
 import NoteItem from "./NoteItem";
 
 export default function NotesNav({ userId }) {
@@ -8,7 +8,7 @@ export default function NotesNav({ userId }) {
 	let { notes } = useSelector(state => state.notes);
 
 	useEffect(() => {
-		dispatch(getNotes({ id: userId }));
+		dispatch(fetchNotes({ id: userId }));
 	}, [dispatch, userId])
 
 	return (
