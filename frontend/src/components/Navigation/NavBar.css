@@ -21,7 +21,10 @@
 
 .nav-element {
 	margin: 0px 8px;
-	/* TODO #39 hover color on links*/
+}
+
+.nav-element:hover {
+	color: #00A82D;
 }
 
 #utility-nav {
@@ -31,6 +34,10 @@
 #login {
 	text-decoration: none;
 	color: black;
+}
+
+#login:hover {
+	color: #00A82D;
 }
 
 #github-button {
