@@ -18,4 +18,34 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 	});
 }));
 
+router.post("/", asyncHandler(async (req, res) => {
+	const { userId, notebookId } = req.body;
+	const note = await Note.create({
+		userId,
+		notebookId,
+		title: "",
+		content: ""
+	});
+
+	return res.json({
+		note
+	})
+}))
+
+// router.put("/:id(\\d+)", asyncHandler(async (req, res) => {
+// 	const note = await Note.findByPk(noteId);
+// 	await note.update({
+
+// 	});
+// 	note.save();
+
+// 	return res.json({
+// 		note
+// 	});
+// }))
+
+// router.delete("/:id(\\d+)",asyncHandler(async (req, res) => {
+
+// })
+
 module.exports = router;
