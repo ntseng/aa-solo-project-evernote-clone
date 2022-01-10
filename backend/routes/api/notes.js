@@ -32,17 +32,20 @@ router.post("/", asyncHandler(async (req, res) => {
 	})
 }))
 
-// router.put("/:id(\\d+)", asyncHandler(async (req, res) => {
-// 	const note = await Note.findByPk(noteId);
-// 	await note.update({
+router.put("/", asyncHandler(async (req, res) => {
+	const { noteId, notebookId, title, content } = req.body;
+	const note = await Note.findByPk(noteId);
+	await note.update({
+		notebookId,
+		title,
+		content
+	});
+	note.save();
 
-// 	});
-// 	note.save();
-
-// 	return res.json({
-// 		note
-// 	});
-// }))
+	return res.json({
+		note
+	});
+}))
 
 // router.delete("/:id(\\d+)",asyncHandler(async (req, res) => {
 
