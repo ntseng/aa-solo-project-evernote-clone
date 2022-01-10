@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import "./LoginForm.css";
 import { login } from "../../store/session.js";
@@ -27,7 +27,8 @@ export default function LoginFormPage() {
 
 	return (
 		<>
-			<h1>Log in</h1>
+			<h1>Evernote Clone</h1>
+			<span>Remember everything important.</span>
 			<form className="login-form"
 				onSubmit={handleSubmission}>
 				<ul>
@@ -49,8 +50,10 @@ export default function LoginFormPage() {
 						required
 					/>
 				</label>
-				<button type="submit">Login</button>
+				<button type="submit">Continue</button>
 			</form>
+			<span>Don't have an account?</span>
+			<Link to="/signup">Create account</Link>
 		</>
 	)
 }
