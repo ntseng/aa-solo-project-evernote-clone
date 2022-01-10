@@ -1,6 +1,5 @@
 import { csrfFetch } from "./csrf";
 
-const INITIAL_STATE = { notes: {} };
 const GET_NOTES = "notes/get";
 const ADD_NOTE = "notes/add";
 const EDIT_NOTE = "notes/edit";
@@ -92,22 +91,22 @@ export function trashNote({ noteId }) {
 	}
 }
 
-export default function notesReducer(state = INITIAL_STATE, action) {
-	let updatedState = { ...state };
+export default function notesReducer(stateDotNotes = {}, action) {
+	let updatedState = { ...stateDotNotes };
 	switch (action.type) {
 		case GET_NOTES:
 			action.notes.forEach(note => {
-				updatedState.notes[note.id] = note;
+				updatedState[note.id] = note;
 			})
 			return updatedState;
 		case ADD_NOTE:
 		case EDIT_NOTE:
-			updatedState.notes[action.note.id] = action.note;
+			updatedState[action.note.id] = action.note;
 			return updatedState;
 		case DELETE_NOTE:
-			delete updatedState.notes[action.noteId]
+			delete updatedState[action.noteId]
 			return updatedState;
 		default:
-			return state;
+			return stateDotNotes;
 	}
 }

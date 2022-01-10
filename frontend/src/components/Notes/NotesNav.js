@@ -5,7 +5,7 @@ import NoteItem from "./NoteItem";
 
 export default function NotesNav({ userId }) {
 	const dispatch = useDispatch();
-	let { notes } = useSelector(state => state.notes);
+	let notes = useSelector(state => state.notes);
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: userId }));
