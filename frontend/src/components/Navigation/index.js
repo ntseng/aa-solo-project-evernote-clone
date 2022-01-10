@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { demoLogin } from "../../store/session";
 import ProfileButton from "./ProfileButton";
 
@@ -45,7 +45,7 @@ export default function Navigation({ isLoaded }) {
 						<img src="/images/logo.svg" alt="calendar" />
 						<div className="content-container">
 							<h2 className="h2-banner">Save 50% on Personal!</h2>
-							<p className="cta">Button</p>
+							<Link className="cta" to="/login">Button</Link>
 							<p id="banner-description">Get our best-ever deal for a limited time. Ends 1/31.</p>
 						</div>
 					</div>
