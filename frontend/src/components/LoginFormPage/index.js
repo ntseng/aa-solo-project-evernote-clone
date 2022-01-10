@@ -27,7 +27,7 @@ export default function LoginFormPage() {
 
 	return (
 		<>
-			<img src="/images/icon.png" alt="logo" id="auth-logo"/>
+			<img src="/images/icon.png" alt="logo" id="auth-logo" />
 			<h1>Evernote Clone</h1>
 			<span>Remember everything important.</span>
 			<form className="login-form"
@@ -35,25 +35,21 @@ export default function LoginFormPage() {
 				<ul>
 					{errors.map((error, index) => <li key={index}>{error}</li>)}
 				</ul>
-				<label>
-					Username or Email
-					<input type="text"
-						value={credential}
-						onChange={e => setCredential(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Password
-					<input type="password"
-						value={password}
-						onChange={e => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<button type="submit">Continue</button>
+				<input type="text" className="text-input"
+					placeholder="Email address or username"
+					value={credential}
+					onChange={e => setCredential(e.target.value)}
+					required
+				/>
+				<input type="password" className="text-input"
+					placeholder="Password"
+					value={password}
+					onChange={e => setPassword(e.target.value)}
+					required
+				/>
+				<button type="submit" id="continue-button">Continue</button>
 			</form>
-			<span>Don't have an account?</span>
+			<div>Don't have an account?</div>
 			<Link to="/signup">Create account</Link>
 		</>
 	)
