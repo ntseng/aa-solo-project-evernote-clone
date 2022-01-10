@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import "./SignUpForm.css";
 import { signUp } from "../../store/session.js";
@@ -33,7 +33,9 @@ export default function SignUpFormPage() {
 
 	return (
 		<>
-			<h1>Sign Up</h1>
+			<img src="/images/logo.svg" alt="logo" />
+			<h1>Evernote Clone</h1>
+			<span>Remember everything important.</span>
 			<form className="signup-form"
 				onSubmit={handleSubmission}>
 				<ul>
@@ -71,8 +73,11 @@ export default function SignUpFormPage() {
 						required
 					/>
 				</label>
-				<button type="submit">Login</button>
+				<button type="submit">Continue</button>
 			</form>
+			<span>By creating an account, you are agreeing to your <Link>Terms of Service</Link> and <Link>Privacy Policy</Link>.</span>
+			<span>Already have an account?</span>
+			<Link to="/login">Sign in</Link>
 		</>
 	)
 }

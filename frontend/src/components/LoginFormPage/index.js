@@ -27,6 +27,7 @@ export default function LoginFormPage() {
 
 	return (
 		<>
+			<img src="/images/logo.svg" alt="logo" />
 			<h1>Evernote Clone</h1>
 			<span>Remember everything important.</span>
 			<form className="login-form"
