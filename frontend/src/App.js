@@ -7,6 +7,10 @@ import Navigation from "./components/Navigation";
 import ValueProp from "./components/Landing/valueProp";
 import HeroRow from "./components/Landing/heroRow";
 import AuthContainer from "./components/AuthContainer";
+import UserNav from "./components/UserNav";
+import UserPage from "./components/UserPage";
+import NotesNav from "./components/Notes/NotesNav";
+import NotesEditor from "./components/Notes/NotesEditor";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,6 +34,15 @@ function App() {
 					</Route>
 					<Route path="/signup">
 						<AuthContainer newAccount={true} />
+					</Route>
+					<Route exact path="/user/:id">
+						<UserNav />
+						<UserPage />
+					</Route>
+					<Route path="/user/:id/notes/:noteId">
+						<UserNav />
+						<NotesNav />
+						<NotesEditor />
 					</Route>
 				</Switch>
 			)}
