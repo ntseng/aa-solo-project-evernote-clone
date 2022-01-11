@@ -5,7 +5,7 @@ import NoteItem from "./NoteItem";
 
 export default function NotesNav({ userId }) {
 	const dispatch = useDispatch();
-	let notes = useSelector(state => state.notes);
+	let noteEntries = useSelector(state => Object.entries(state.notes).filter(([key, value]) => !!value));
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: userId }));
@@ -13,7 +13,11 @@ export default function NotesNav({ userId }) {
 
 	return (
 		<>
-			{Object.values(notes).map((note, index) => <li key={index}><NoteItem note={note} /></li>)}
+			{noteEntries.map((note, index) => {
+				if (/^\d+$/.test(note[0])) {
+					return (<li key={index}><NoteItem note={note[1]} /></li>)
+				}
+			})}
 		</>
 	)
 }

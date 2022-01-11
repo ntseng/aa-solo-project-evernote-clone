@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function NotesEditor({ noteId }) {
-	let note = useSelector(state => state.notes[noteId]);
+export default function NotesEditor() {
+	let note = useSelector(state => state.notes.currentNote);
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 

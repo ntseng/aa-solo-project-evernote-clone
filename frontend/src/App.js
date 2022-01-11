@@ -46,7 +46,7 @@ function App() {
 						{user && (<>
 							<UserNav userId={user.id} />
 							<NotesNav userId={user.id} />
-							<NotesEditor noteId={1} />
+							<NotesEditor />
 						</>)}
 					</Route>
 				</Switch>
