@@ -1,3 +1,12 @@
 #user-nav {
 	background-color: #1a1a1a;
+	height: 100vh;
+}
+
+.user-nav-link {
+	color: #1A1A1A;
+}
+
+.no-bullet {
+	list-style: none;
 }

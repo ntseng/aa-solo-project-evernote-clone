@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { createNote } from "../../store/notes";
+import "./UserNav.css";
 
 export default function UserNav({ userId }) {
 	const dispatch = useDispatch();
@@ -12,14 +13,16 @@ export default function UserNav({ userId }) {
 				<div>Placeholder</div>
 			</li>
 			{/* <li>Search</li> */}
-			<li><button onClick={e => dispatch(createNote({ userId, notebookId: null }))}>New Note</button></li>
-			<li>Home</li>
+			<li className="no-bullet"><button onClick={e => dispatch(createNote({ userId, notebookId: null }))}>New Note</button></li>
+			<li className="no-bullet">
+				<NavLink to={`/user`} className="user-nav-link">Home</NavLink>
+			</li>
 			<ul id="links">
-				<li>
-					<Link to={`/notes`}>Notes</Link>
+				<li className="no-bullet">
+					<NavLink to={`/notes`} className="user-nav-link">Notes</NavLink>
 				</li>
-				<li>
-					<Link to={`/notebooks`}>Notebooks</Link>
+				<li className="no-bullet">
+					<NavLink to={`/notebooks`} className="user-nav-link">Notebooks</NavLink>
 				</li>
 			</ul>
 			<button>Upgrade</button>

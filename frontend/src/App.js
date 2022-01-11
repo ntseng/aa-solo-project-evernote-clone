@@ -39,19 +39,19 @@ function App() {
 						<AuthContainer newAccount={true} />
 					</Route>
 					<Route exact path="/user/">
-						{user && (<>
+						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
 							<UserPage />
-						</>)}
+						</div>)}
 					</Route>
 					<Route path="/notes/">
-						{user && (<>
+						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
 							<NotesNav userId={user.id} />
 							{hasCurrentNote && (<>
 								<NotesEditor />
 							</>)}
-						</>)}
+						</div>)}
 					</Route>
 				</Switch>
 			)}
