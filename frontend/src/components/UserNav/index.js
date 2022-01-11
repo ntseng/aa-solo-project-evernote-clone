@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { createNote } from "../../store/notes";
 
 export default function UserNav({ userId }) {
+	const dispatch = useDispatch();
+	console.log(userId);
 	return (
 		<ul id="user-nav">
 			<li id="settings">
@@ -8,6 +12,7 @@ export default function UserNav({ userId }) {
 				<div>Placeholder</div>
 			</li>
 			{/* <li>Search</li> */}
+			<li><button onClick={e => dispatch(createNote({ userId, notebookId: null }))}>New Note</button></li>
 			<li>Home</li>
 			<ul id="links">
 				<li>

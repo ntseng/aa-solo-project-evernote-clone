@@ -17,6 +17,7 @@ export default function Navigation({ isLoaded }) {
 	} else {
 		sessionLinks = (
 			<nav id="utility-nav">
+				{/* TODO #68 demo login redirects to /user */}
 				<span className="nav-element pointer" onClick={e => dispatch(demoLogin())}>Demo Login</span>
 				<NavLink className="nav-element" id="login" to="/login">Log In</NavLink>
 				<a className="nav-element" id="github-button" href="https://github.com/ntseng/aa-solo-react-project">GitHub</a>

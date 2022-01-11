@@ -37,7 +37,7 @@ function App() {
 						<AuthContainer newAccount={true} />
 					</Route>
 					<Route exact path="/user/">
-						<UserNav />
+						<UserNav userId={1}/>
 						<UserPage />
 					</Route>
 					<Route path="/notes/">
