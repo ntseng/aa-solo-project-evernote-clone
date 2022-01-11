@@ -44,10 +44,10 @@ export default function Navigation({ isLoaded }) {
 				<div className="container centered">
 					<img id="calendar-img" src="/images/icon.png" alt="calendar" />
 					<div className="content-container">
-						<h2 className="h2-banner">Save 50% on Personal!</h2>
-						<p id="banner-description">Get our best-ever deal for a limited time. Ends 1/31.</p>
+						<h2 className="h2-banner">This site may differ from Evernote</h2>
+						<p id="banner-description">Check out what Evernote looked like while this site was being built (1/6/22 - 1/13/22).</p>
 					</div>
-					<Link className="cta" to="/login">Button</Link>
+					<a className="cta" href="https://github.com/ntseng/aa-solo-react-project/wiki/Wireframes">Wireframes</a>
 				</div>
 			</div>
 		</>
