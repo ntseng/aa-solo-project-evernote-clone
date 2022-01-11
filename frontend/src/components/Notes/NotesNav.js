@@ -12,13 +12,13 @@ export default function NotesNav({ userId }) {
 	}, [dispatch, userId])
 
 	return (
-		<>
+		<div id="notes-nav">
 			{noteEntries.reduce((array, note, index) => {
 				if (/^\d+$/.test(note[0])) {
-					array.push((<li key={index}><NoteItem note={note[1]} /></li>))
+					array.push((<li className="no-bullet" key={index}><NoteItem note={note[1]} /></li>))
 				}
 				return array;
 			}, [])}
-		</>
+		</div>
 	)
 }

@@ -1,29 +1,46 @@
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { createNote } from "../../store/notes";
+import "./UserNav.css";
 
 export default function UserNav({ userId }) {
 	const dispatch = useDispatch();
+	const user = useSelector(state => state.session.user);
 
 	return (
-		<ul id="user-nav">
+		<div id="user-nav">
 			<li id="settings">
-				<img alt="profile" />
-				<div>Placeholder</div>
+				<img id="profile-img" src="https://www.evernote.com/shard/s647/user/231928776/photo?size=56" alt="profile" />
+				<span id="username-span">{user.username}</span>
 			</li>
 			{/* <li>Search</li> */}
-			<li><button onClick={e => dispatch(createNote({ userId, notebookId: null }))}>New Note</button></li>
-			<li>Home</li>
+			<li className="user-nav-li no-bullet">
+				<button id="new-note-button" onClick={e => dispatch(createNote({ userId, notebookId: null }))}>
+					<i className="fas fa-solid fa-plus"></i> New Note
+				</button></li>
+			<li className="user-nav-li no-bullet">
+				<div>
+					<i className="fas fa-home user-nav-icon"></i>
+					<NavLink to={`/user`} className="user-nav-link"> Home</NavLink>
+				</div>
+			</li>
 			<ul id="links">
-				<li>
-					<Link to={`/notes`}>Notes</Link>
+				<li className="user-nav-li no-bullet">
+					<div>
+						<i className="fas fa-solid fa-sticky-note user-nav-icon"></i>
+						<NavLink to={`/notes`} className="user-nav-link"> Notes</NavLink>
+					</div>
 				</li>
-				<li>
-					<Link to={`/notebooks`}>Notebooks</Link>
+				<li className="user-nav-li no-bullet">
+					<i className="fas fa-solid fa-book user-nav-icon"></i>
+					<NavLink to={`/notebooks`} className="user-nav-link"> Notebooks</NavLink>
 				</li>
 			</ul>
-			<button>Upgrade</button>
-			<li>Get Started</li>
-		</ul>
+			<a id="money-button" href="https://github.com/sponsors/ntseng">Monetization Button</a>
+			<div>
+				<i className="fas fa-rocket user-nav-icon"></i>
+				<a id="get-started" href="https://github.com/ntseng/aa-solo-react-project/blob/main/README.md"> Get Started</a>
+			</div>
+		</div>
 	)
 }
