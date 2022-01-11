@@ -2,7 +2,7 @@ export default function HeroRow() {
 	return (
 		<>
 			<div className="hero-img-container">
-				<img src="/images/landing.png" alt="App Demo" />
+				<img id="demo-img" src="/images/landing.png" alt="App Demo" />
 			</div>
 			<div className="carousel-container">
 				<div className="hero-carousel-texts">

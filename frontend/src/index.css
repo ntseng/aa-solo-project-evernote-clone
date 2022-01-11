@@ -13,6 +13,16 @@
 	list-style: none;
 }
 
+#value-prop-div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#demo-img {
+	width: 980px;
+}
+
 #main-container {
 	display: flex;
 }
