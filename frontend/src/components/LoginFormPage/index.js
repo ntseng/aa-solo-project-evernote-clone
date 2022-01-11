@@ -29,7 +29,7 @@ export default function LoginFormPage() {
 		<>
 			<img src="/images/icon.png" alt="logo" id="auth-logo" />
 			<h1>Evernote Clone</h1>
-			<span>Remember everything important.</span>
+			<span id="slogan">Remember everything important.</span>
 			<form className="login-form"
 				onSubmit={handleSubmission}>
 				<ul>
@@ -50,7 +50,7 @@ export default function LoginFormPage() {
 				<button type="submit" id="continue-button">Continue</button>
 			</form>
 			<div>Don't have an account?</div>
-			<Link to="/signup">Create account</Link>
+			<Link to="/signup" className="switch-link">Create account</Link>
 		</>
 	)
 }
