@@ -13,11 +13,12 @@ export default function NotesNav({ userId }) {
 
 	return (
 		<>
-			{noteEntries.map((note, index) => {
+			{noteEntries.reduce((array, note, index) => {
 				if (/^\d+$/.test(note[0])) {
-					return (<li key={index}><NoteItem note={note[1]} /></li>)
+					array.push((<li key={index}><NoteItem note={note[1]} /></li>))
 				}
-			})}
+				return array;
+			}, [])}
 		</>
 	)
 }

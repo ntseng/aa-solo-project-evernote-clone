@@ -35,16 +35,20 @@ router.post("/", asyncHandler(async (req, res) => {
 router.put("/", asyncHandler(async (req, res) => {
 	const { noteId, notebookId, title, content } = req.body;
 	const note = await Note.findByPk(noteId);
-	await note.update({
-		notebookId,
-		title,
-		content
-	});
-	note.save();
+	if (note) {
+		await note.update({
+			notebookId,
+			title,
+			content
+		});
+		note.save();
 
-	return res.json({
-		note
-	});
+		return res.json({
+			note
+		});
+	} else {
+		return res.json({});
+	}
 }))
 
 router.delete("/", asyncHandler(async (req, res) => {
