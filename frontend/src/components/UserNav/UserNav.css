@@ -4,9 +4,17 @@
 }
 
 .user-nav-link {
-	color: #1A1A1A;
+	color: #a6a6a6;
+	text-decoration: none;
 }
 
-.no-bullet {
-	list-style: none;
+.user-nav-li {
+	height: 32px;
+	width: 239px;
+	position: sticky;
+}
+
+.active {
+	background-color: #cccccc;
+	color: #ffffff;
 }

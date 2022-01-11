@@ -19,13 +19,13 @@ export default function NotesEditor() {
 	}, [note])
 
 	return (
-		<div>
-			<input placeholder="Title"
+		<div id="editor-container">
+			<input placeholder="Title" id="title-input"
 				value={title}
 				onChange={e => setTitle(e.target.value)}
 				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title, content }))}
 			/>
-			<textarea placeholder="Start writing"
+			<textarea placeholder="Start writing" id="content-textarea"
 				value={content}
 				onChange={e => setContent(e.target.value)}
 				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title, content }))}
