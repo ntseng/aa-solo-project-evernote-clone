@@ -17,18 +17,34 @@
 	height: 50px;
 }
 
-/* TODO #38 font styling for left links */
-
 .nav-element {
 	margin: 0px 8px;
+}
+
+.bold {
+	font-weight: 600;
 }
 
 .nav-element:hover {
 	color: #00A82D;
 }
 
+.nav-element a {
+	color: black;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.nav-element a:hover {
+	color: #00A82D;
+}
+
 #utility-nav {
 	margin-left: auto;
+}
+
+.pointer:hover {
+	cursor: pointer;
 }
 
 #login {
@@ -43,14 +59,16 @@
 #github-button {
 	height: 40px;
 	min-width: 120px;
-	line-height: 37px;
 	font-size: 14px;
+	line-height: 37px;
 	text-align: center;
-	border: 2px solid #00A82D;
-	border-radius: 3px;
-	background-color: white;
-	padding: 0px 10px;
+	text-decoration: none;
+	letter-spacing: 0.5px;
 	color: #00A82D;
+	border-radius: 3px;
+	border: 2px solid #00A82D;
+	padding: 0px 10px;
+	background-color: white;
 	font-weight: 600;
 }
 
