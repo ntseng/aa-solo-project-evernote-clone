@@ -1,8 +1,5 @@
 import { csrfFetch } from "./csrf";
 
-const INITIAL_STATE = {
-	user: null
-}
 const LOGIN = "session/login";
 const LOGOUT = "session/logout";
 
@@ -78,8 +75,8 @@ export function logout() {
 	}
 }
 
-export default function sessionReducer(state = INITIAL_STATE, action) {
-	let updatedState = { ...state };
+export default function sessionReducer(stateDotSession = {}, action) {
+	let updatedState = { ...stateDotSession };
 	switch (action.type) {
 		case LOGIN:
 			updatedState.user = action.user;
@@ -88,6 +85,6 @@ export default function sessionReducer(state = INITIAL_STATE, action) {
 			updatedState.user = null;
 			return updatedState;
 		default:
-			return state;
+			return stateDotSession;
 	}
 }

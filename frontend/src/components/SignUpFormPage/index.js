@@ -15,7 +15,7 @@ export default function SignUpFormPage() {
 	const [errors, setErrors] = useState([]);
 
 	if (sessionUser) return (
-		<Redirect to="/" />
+		<Redirect to="/user" />
 	)
 
 	function handleSubmission(e) {
