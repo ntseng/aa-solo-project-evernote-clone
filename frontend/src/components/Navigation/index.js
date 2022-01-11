@@ -17,9 +17,9 @@ export default function Navigation({ isLoaded }) {
 	} else {
 		sessionLinks = (
 			<nav id="utility-nav">
-				<span className="nav-element" onClick={e => dispatch(demoLogin())}>Demo Login</span>
+				<span className="nav-element pointer" onClick={e => dispatch(demoLogin())}>Demo Login</span>
 				<NavLink className="nav-element" id="login" to="/login">Log In</NavLink>
-				<button className="nav-element" id="github-button">GitHub</button>
+				<a className="nav-element" id="github-button" href="https://github.com/ntseng/aa-solo-react-project">GitHub</a>
 			</nav>
 		)
 	}
@@ -31,10 +31,10 @@ export default function Navigation({ isLoaded }) {
 						<NavLink exact to="/"><img id="logo" src={"/images/logo.svg"} alt="Evernote Clone logo" /></NavLink>
 					</li>
 					<li className="nav-element">
-						<span>Developer</span>
+						<a href="https://github.com/ntseng" className="bold">DEVELOPER</a>
 					</li>
-					<li className="nav-element">
-						<span>Tech Stack</span>
+					<li className="nav-element bold">
+						<span>TECH STACK</span>
 					</li>
 					{isLoaded && sessionLinks}
 				</div>
