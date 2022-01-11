@@ -74,8 +74,20 @@
 
 #calendar-banner {
 	background-color: black;
-	width: 100%;
+}
+
+.container {
 	height: 200px;
+	display: flex;
+	margin-top: 80px;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#calendar-img {
+	height: 153px;
+	width: 153px;
 }
 
 .h2-banner {
@@ -89,4 +101,10 @@
 .cta {
 	background-color: #00A82D;
 	color: white;
+	text-decoration: none;
+	border-radius: 3px;
+	letter-spacing: 1.5px;
+	min-width: 200px;
+	text-align: center;
+	padding: 15px 20px;
 }

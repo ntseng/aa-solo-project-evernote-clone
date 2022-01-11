@@ -29,7 +29,7 @@ export default function Navigation({ isLoaded }) {
 			<header id="navbar">
 				<div className="centered nav-element-container">
 					<li>
-						<NavLink exact to="/"><img id="logo" src={"/images/logo.svg"} alt="Evernote Clone logo" /></NavLink>
+						<Link exact to="/"><img id="logo" src={"/images/logo.svg"} alt="Evernote Clone logo" /></Link>
 					</li>
 					<li className="nav-element">
 						<a href="https://github.com/ntseng" className="bold">DEVELOPER</a>
@@ -41,15 +41,13 @@ export default function Navigation({ isLoaded }) {
 				</div>
 			</header>
 			<div id="calendar-banner">
-				<div className="row">
-					<div className="container clearfix">
-						<img src="/images/logo.svg" alt="calendar" />
-						<div className="content-container">
-							<h2 className="h2-banner">Save 50% on Personal!</h2>
-							<Link className="cta" to="/login">Button</Link>
-							<p id="banner-description">Get our best-ever deal for a limited time. Ends 1/31.</p>
-						</div>
+				<div className="container centered">
+					<img id="calendar-img" src="/images/icon.png" alt="calendar" />
+					<div className="content-container">
+						<h2 className="h2-banner">This site may differ from Evernote</h2>
+						<p id="banner-description">Check out what Evernote looked like while this site was being built (1/6/22 - 1/13/22).</p>
 					</div>
+					<a className="cta" href="https://github.com/ntseng/aa-solo-react-project/wiki/Wireframes">Wireframes</a>
 				</div>
 			</div>
 		</>

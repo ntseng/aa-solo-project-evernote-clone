@@ -1,14 +1,14 @@
 export default function HeroRow() {
 	return (
-		<>
+		<div id="hero-container" className="centered">
 			<div className="hero-img-container">
-				<img src="/images/landing.png" alt="App Demo" />
+				<img id="demo-img" src="/images/landing.png" alt="App Demo" />
 			</div>
 			<div className="carousel-container">
 				<div className="hero-carousel-texts">
 					<div className="hero-carousel-text">
 						<div className="heading">
-							<p className="p-title hero-carousel-text-heading">WORK ANYWHER</p>
+							<p className="p-title hero-carousel-text-heading">WORK ANYWHERE</p>
 						</div>
 						<div className="description">
 							<p className="p-small">Keep important info handy—your notes sync automatically to all your devices.</p>
@@ -40,6 +40,6 @@ export default function HeroRow() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
