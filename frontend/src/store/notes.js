@@ -126,6 +126,7 @@ export default function notesReducer(stateDotNotes = {}, action) {
 			return updatedState;
 		case DELETE_NOTE:
 			delete updatedState[action.noteId]
+			updatedState.currentNote = {};
 			return updatedState;
 		case SHOW_NOTE:
 			updatedState.currentNote = action.note;

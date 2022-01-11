@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editNote } from "../../store/notes";
+import { editNote, trashNote } from "../../store/notes";
 
 export default function NotesEditor() {
 	const dispatch = useDispatch();
@@ -9,8 +9,13 @@ export default function NotesEditor() {
 	const [content, setContent] = useState("");
 
 	useEffect(() => {
-		setTitle(note?.title || "");
-		setContent(note?.content || "");
+		if (note) {
+			setTitle(note.title);
+			setContent(note.content);
+		} else {
+			setTitle("");
+			setContent("");
+		}
 	}, [note])
 
 	return (
@@ -25,6 +30,7 @@ export default function NotesEditor() {
 				onChange={e => setContent(e.target.value)}
 				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title, content }))}
 			/>
+			<button onClick={e => dispatch(trashNote({ noteId: note.id }))}>Delete</button>
 		</div>
 	)
 }
