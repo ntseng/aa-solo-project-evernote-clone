@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import { restoreSession } from "./store/session";
@@ -15,7 +15,7 @@ import NotesEditor from "./components/Notes/NotesEditor";
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
-
+	const user = useSelector(state => state.session.user);
 
 	useEffect(() => {
 		dispatch(restoreSession()).then(() => setIsLoaded(true));
@@ -37,13 +37,17 @@ function App() {
 						<AuthContainer newAccount={true} />
 					</Route>
 					<Route exact path="/user/">
-						<UserNav userId={1}/>
-						<UserPage />
+						{user && (<>
+							<UserNav userId={user.id} />
+							<UserPage />
+						</>)}
 					</Route>
 					<Route path="/notes/">
-						<UserNav userId={1} />
-						<NotesNav userId={1} />
-						<NotesEditor noteId={1} />
+						{user && (<>
+							<UserNav userId={user.id} />
+							<NotesNav userId={user.id} />
+							<NotesEditor noteId={1} />
+						</>)}
 					</Route>
 				</Switch>
 			)}

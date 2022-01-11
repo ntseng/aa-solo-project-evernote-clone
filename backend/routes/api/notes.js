@@ -20,7 +20,6 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 router.post("/", asyncHandler(async (req, res) => {
 	const { userId, notebookId } = req.body;
-	console.log(userId, notebookId);
 	const note = await Note.create({
 		userId,
 		notebookId,
