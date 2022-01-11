@@ -16,6 +16,8 @@ function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
 	const user = useSelector(state => state.session.user);
+	const currentNote = useSelector(state => state.notes.currentNote);
+	const hasCurrentNote = !!currentNote && !!Object.entries(currentNote).length;
 
 	useEffect(() => {
 		dispatch(restoreSession()).then(() => setIsLoaded(true));
@@ -46,7 +48,9 @@ function App() {
 						{user && (<>
 							<UserNav userId={user.id} />
 							<NotesNav userId={user.id} />
-							<NotesEditor />
+							{hasCurrentNote && (<>
+								<NotesEditor />
+							</>)}
 						</>)}
 					</Route>
 				</Switch>
