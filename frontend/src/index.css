@@ -31,7 +31,23 @@
 	font-weight: 400;
 	line-height: 150%;
 	padding-bottom: 30px;
-	font-family: "Soleil",Helvetica,Arial,sans-serif;
+	font-family: "Soleil", Helvetica, Arial, sans-serif;
+}
+
+#cta-p {
+	padding-bottom: 20px;
+	font-family: "Soleil", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 21px;
+}
+
+.login-cta a {
+	color: black;
+	font-family: "Soleil_Bold", Helvetica, Arial, sans-serif;
+}
+
+.login-cta a:hover {
+	color: #00A82D;
 }
 
 #hero-container {
@@ -41,6 +57,28 @@
 
 #demo-img {
 	width: 980px;
+}
+
+.carousel-container {
+	width: 16%;
+	min-width: 240px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	line-height: 22px;
+	color: #000;
+}
+
+.hero-carousel-text {
+	padding-bottom: 20px;
+}
+
+.heading {
+	padding-bottom: 10px;
+	font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 150%;
+	font-weight: 700;
 }
 
 #main-container {
@@ -73,5 +111,5 @@
 }
 
 #content-textarea {
-	border:none;
+	border: none;
 }
