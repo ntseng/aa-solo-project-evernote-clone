@@ -66,3 +66,12 @@
 	font-weight: 700;
 	text-align: center;
 }
+
+#get-started {
+	text-decoration: none;
+	color: #a6a6a6;
+}
+
+.user-nav-icon {
+	color: #a6a6a6;
+}

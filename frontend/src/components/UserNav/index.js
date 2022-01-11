@@ -14,20 +14,33 @@ export default function UserNav({ userId }) {
 				<span id="username-span">{user.username}</span>
 			</li>
 			{/* <li>Search</li> */}
-			<li className="user-nav-li no-bullet"><button id="new-note-button" onClick={e => dispatch(createNote({ userId, notebookId: null }))}>+ New Note</button></li>
 			<li className="user-nav-li no-bullet">
-				<NavLink to={`/user`} className="user-nav-link">Home</NavLink>
+				<button id="new-note-button" onClick={e => dispatch(createNote({ userId, notebookId: null }))}>
+					<i className="fas fa-solid fa-plus"></i> New Note
+				</button></li>
+			<li className="user-nav-li no-bullet">
+				<div>
+					<i className="fas fa-home user-nav-icon"></i>
+					<NavLink to={`/user`} className="user-nav-link"> Home</NavLink>
+				</div>
 			</li>
 			<ul id="links">
 				<li className="user-nav-li no-bullet">
-					<NavLink to={`/notes`} className="user-nav-link">Notes</NavLink>
+					<div>
+						<i className="fas fa-solid fa-sticky-note user-nav-icon"></i>
+						<NavLink to={`/notes`} className="user-nav-link"> Notes</NavLink>
+					</div>
 				</li>
 				<li className="user-nav-li no-bullet">
-					<NavLink to={`/notebooks`} className="user-nav-link">Notebooks</NavLink>
+					<i className="fas fa-solid fa-book user-nav-icon"></i>
+					<NavLink to={`/notebooks`} className="user-nav-link"> Notebooks</NavLink>
 				</li>
 			</ul>
 			<a id="money-button" href="https://github.com/sponsors/ntseng">Monetization Button</a>
-			<a id="get-started" href="https://github.com/ntseng/aa-solo-react-project/blob/main/README.md">Get Started</a>
+			<div>
+				<i className="fas fa-rocket user-nav-icon"></i>
+				<a id="get-started" href="https://github.com/ntseng/aa-solo-react-project/blob/main/README.md"> Get Started</a>
+			</div>
 		</div>
 	)
 }
