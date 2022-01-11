@@ -1,20 +1,68 @@
 #user-nav {
 	background-color: #1a1a1a;
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#settings {
+	display: flex;
+	align-items: center;
+}
+
+#profile-img {
+	height: 28px;
+	width: 28px;
+	border-radius: 14px;
+	margin: 15px;
+}
+
+#username-span {
+	color: #a6a6a6;
+}
+
+#new-note-button {
+	background-color: #00A82D;
+	height: 36px;
+	width: 100%;
+	padding: 0 0 0 3px;
+	border-radius: 18px;
+	border: none;
+	text-align: left;
+	color: white;
+	margin: 4px 0px;
+}
+
+#links {
+	height: 100%;
+	width: 239px;
 }
 
 .user-nav-link {
 	color: #a6a6a6;
 	text-decoration: none;
+	width: 100%;
 }
 
 .user-nav-li {
 	height: 32px;
-	width: 239px;
+	width: 100%;
 	position: sticky;
 }
 
 .active {
 	background-color: #cccccc;
 	color: #ffffff;
+}
+
+#money-button {
+	border: 1px solid #fcb100;
+	text-decoration: none;
+	color: #fcb100;
+	border-radius: 4px;
+	margin: 12px;
+	padding: 4px;
+	font-weight: 700;
+	text-align: center;
 }
