@@ -4,7 +4,7 @@ import { createNote } from "../../store/notes";
 
 export default function UserNav({ userId }) {
 	const dispatch = useDispatch();
-	console.log(userId);
+
 	return (
 		<ul id="user-nav">
 			<li id="settings">
