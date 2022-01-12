@@ -9,7 +9,7 @@ export default function NotesListItem({ note }) {
 
 	return (
 		<div className="note-item" onClick={e => {
-			history.push("/notes"); //TODONOW this overwrites the upcoming showNote()
+			history.push("/notes");
 			return dispatch(showNote({ userId, noteId: note.id }));
 		}}>
 			<div>{note.title || "Untitled"}</div>
