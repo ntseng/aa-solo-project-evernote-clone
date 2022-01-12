@@ -1,11 +1,17 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { createNote } from "../../store/notes";
+import { restoreSession } from "../../store/session";
 import "./UserNav.css";
 
 export default function UserNav({ userId }) {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.session.user);
+
+	useEffect(() => {
+		dispatch(restoreSession())
+	}, [dispatch])
 
 	return (
 		<div id="user-nav">
