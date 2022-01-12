@@ -115,7 +115,9 @@ export default function notesReducer(stateDotNotes = {}, action) {
 			action.notes.forEach(note => {
 				updatedState[note.id] = note;
 			})
-			updatedState.currentNote = action.notes[0];
+			if (!(updatedState.currentNote && Object.entries(updatedState.currentNote).length)) {
+				updatedState.currentNote = action.notes[0];
+			}
 			return updatedState;
 		case ADD_NOTE:
 			updatedState[action.note.id] = action.note;
