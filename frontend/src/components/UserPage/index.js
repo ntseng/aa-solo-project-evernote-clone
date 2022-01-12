@@ -11,9 +11,12 @@ export default function UserPage() {
 	}, [dispatch])
 
 	return (
-		<>
-			<div>{`Good Morning, ${user.username}!`}</div>
-			<div>{new Date().toString()}</div>
-		</>
+		<div id="user-page">
+			<div id="user-heading">
+				<div id="greeting">{`Good Morning, ${user.username}!`}</div>
+				<div id="clock">{new Date().toString()}</div>
+			</div>
+			<div id="user-widgets"></div>
+		</div>
 	)
 }
