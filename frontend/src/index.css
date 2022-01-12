@@ -145,6 +145,25 @@
 	border: 2px solid #cccccc;
 	background-color: #ffffff;
 	margin: 2px 0px;
+	padding: 10px;
+	max-width: 300px;
+}
+
+.note-item:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 2px grey;
+}
+
+.note-title {
+	font-weight: 600;
+}
+
+.note-content-preview {
+	margin-bottom: 10px;
+}
+
+.note-timestamp {
+	font-size: smaller;
 }
 
 #editor-container {
