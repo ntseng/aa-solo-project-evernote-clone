@@ -30,7 +30,7 @@ export default function NotesEditor() {
 				onChange={e => setContent(e.target.value)}
 				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title, content }))}
 			/>
-			<button onClick={e => dispatch(trashNote({ noteId: note.id }))}>Delete</button>
+			<button id="delete" onClick={e => dispatch(trashNote({ noteId: note.id }))}>Delete</button>
 		</div>
 	)
 }

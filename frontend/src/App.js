@@ -29,11 +29,9 @@ function App() {
 			{isLoaded && (
 				<Switch>
 					<Route exact path="/">
-						{user ? history.push("/user") : (<>
-							<Navigation isLoaded={isLoaded} />
-							<ValueProp />
-							<HeroRow />
-						</>)}
+						<Navigation isLoaded={isLoaded} />
+						<ValueProp />
+						<HeroRow />
 					</Route>
 					<Route path="/login">
 						<AuthContainer newAccount={false} />
@@ -42,19 +40,19 @@ function App() {
 						<AuthContainer newAccount={true} />
 					</Route>
 					<Route exact path="/user/">
-						{user ? (<div id="main-container">
+						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
 							<UserPage />
-						</div>) : history.push("/")}
+						</div>)}
 					</Route>
 					<Route path="/notes/">
-						{user ? (<div id="main-container">
+						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
 							<NotesNav userId={user.id} />
 							{hasCurrentNote && (<>
 								<NotesEditor />
 							</>)}
-						</div>) : history.push("/")}
+						</div>)}
 					</Route>
 				</Switch>
 			)}
