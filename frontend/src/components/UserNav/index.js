@@ -47,10 +47,10 @@ export default function UserNav({ userId }) {
 						<NavLink to={`/notes`} className="user-nav-link"> Notes</NavLink>
 					</div>
 				</li>
-				<li className="user-nav-li no-bullet">
+				{/* <li className="user-nav-li no-bullet">
 					<i className="fas fa-solid fa-book user-nav-icon"></i>
 					<NavLink to={`/notebooks`} className="user-nav-link"> Notebooks</NavLink>
-				</li>
+				</li> */}
 			</ul>
 			<a id="money-button" href="https://github.com/sponsors/ntseng">Monetization Button</a>
 			<div>

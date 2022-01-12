@@ -115,6 +115,18 @@
 	height: 43.3%;
 }
 
+#notes-list {
+	margin-left: 25px;
+}
+
+#note-item-container {
+	display: flex;
+}
+
+.note-item {
+	border: 1px solid grey;
+}
+
 #notes-nav {
 	background-color: #f8f8f8;
 	width: 380px;
