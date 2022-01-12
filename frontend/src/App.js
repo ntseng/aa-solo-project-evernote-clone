@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import { restoreSession } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -14,6 +14,7 @@ import NotesEditor from "./components/Notes/NotesEditor";
 
 function App() {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const [isLoaded, setIsLoaded] = useState(false);
 	const user = useSelector(state => state.session.user);
 	const currentNote = useSelector(state => state.notes.currentNote);
@@ -28,9 +29,11 @@ function App() {
 			{isLoaded && (
 				<Switch>
 					<Route exact path="/">
-						<Navigation isLoaded={isLoaded} />
-						<ValueProp />
-						<HeroRow />
+						{user ? history.push("/user") : (<>
+							<Navigation isLoaded={isLoaded} />
+							<ValueProp />
+							<HeroRow />
+						</>)}
 					</Route>
 					<Route path="/login">
 						<AuthContainer newAccount={false} />
@@ -39,19 +42,19 @@ function App() {
 						<AuthContainer newAccount={true} />
 					</Route>
 					<Route exact path="/user/">
-						{user && (<div id="main-container">
+						{user ? (<div id="main-container">
 							<UserNav userId={user.id} />
 							<UserPage />
-						</div>)}
+						</div>) : history.push("/")}
 					</Route>
 					<Route path="/notes/">
-						{user && (<div id="main-container">
+						{user ? (<div id="main-container">
 							<UserNav userId={user.id} />
 							<NotesNav userId={user.id} />
 							{hasCurrentNote && (<>
 								<NotesEditor />
 							</>)}
-						</div>)}
+						</div>) : history.push("/")}
 					</Route>
 				</Switch>
 			)}
