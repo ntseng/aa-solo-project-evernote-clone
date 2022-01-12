@@ -32,52 +32,44 @@ export default function SignUpFormPage() {
 	}
 
 	return (
-		<>
-			<img src="/images/icon.png" alt="logo" id="auth-logo"/>
-			<h1>Evernote Clone</h1>
-			<span>Remember everything important.</span>
+		<div id="login-container">
+			<img src="/images/icon.png" alt="logo" id="auth-logo" />
+			<h1 id="login-h1">Evernote Clone</h1>
+			<span id="slogan">Remember everything important.</span>
 			<form className="signup-form"
 				onSubmit={handleSubmission}>
 				<ul>
 					{errors.map((error, index) => <li key={index}>{error}</li>)}
 				</ul>
-				<label>
-					Username
-					<input type="text"
-						value={username}
-						onChange={e => setUsername(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Email
-					<input type="text"
-						value={email}
-						onChange={e => setEmail(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Password
-					<input type="password"
-						value={password}
-						onChange={e => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Confirm Password
-					<input type="password"
-						value={confirmPassword}
-						onChange={e => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<button type="submit">Continue</button>
+				<input type="text" className="text-input"
+					placeholder="Username"
+					value={username}
+					onChange={e => setUsername(e.target.value)}
+					required
+				/>
+				<input type="text" className="text-input"
+					placeholder="Email"
+					value={email}
+					onChange={e => setEmail(e.target.value)}
+					required
+				/>
+				<input type="password" className="text-input"
+					placeholder="Password"
+					value={password}
+					onChange={e => setPassword(e.target.value)}
+					required
+				/>
+				<input type="password" className="text-input"
+					placeholder="Confirm Password"
+					value={confirmPassword}
+					onChange={e => setConfirmPassword(e.target.value)}
+					required
+				/>
+				<button type="submit" id="continue-button">Continue</button>
 			</form>
-			<span>By creating an account, you are agreeing to your <Link to="/">Terms of Service</Link> and <Link to="/">Privacy Policy</Link>.</span>
+			<span id="disclaimer">A real site would say "By creating an account, you are agreeing to our <Link to="/" className="switch-link">Terms of Service</Link> and <Link to="/" className="switch-link">Privacy Policy</Link>."</span>
 			<span>Already have an account?</span>
-			<Link to="/login">Sign in</Link>
-		</>
+			<Link to="/login" className="switch-link">Sign in</Link>
+		</div>
 	)
 }
