@@ -132,6 +132,12 @@
 	width: 380px;
 }
 
+#empty-notes-message {
+	transform: translate(0%, 500%);
+	width: 380px;
+	text-align: center;
+}
+
 .note-item {
 	list-style: none;
 	height: 120px;
@@ -148,10 +154,33 @@
 }
 
 #title-input {
-	width: 100%;
+	width: 95%;
 	border: none;
+	font-size: 36px;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 15px;
 }
 
 #content-textarea {
 	border: none;
+	height: 100%;
+	font-size: 20px;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+
+#delete {
+	height: 30px;
+	margin: 10px;
+	border-radius: 15px;
+	border: none;
+	background-color: #1a1a1a;
+	color: white;
+	width: 25%;
+}
+
+#delete:hover {
+	background-color: red;
 }
