@@ -33,7 +33,7 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, 50%);
+	transform: translate(-50%, 30%);
 }
 
 .minimal-body {
@@ -41,7 +41,6 @@
 	max-width: 512px;
 	margin: 0px auto 28px auto;
 	padding: 62.12px 99px 48px;
-	/* width: 314px; */
 	box-shadow: 0px 4px 24px rgb(0 0 0 / 10%);
 	border-radius: 2px;
 	text-align: left;
