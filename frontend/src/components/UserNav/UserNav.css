@@ -36,13 +36,16 @@
 #new-note-button {
 	background-color: #00A82D;
 	height: 36px;
-	width: 100%;
+	width: 90%;
 	padding: 0 0 0 3px;
 	border-radius: 18px;
 	border: none;
 	text-align: left;
 	color: white;
 	margin: 4px 0px;
+	margin-bottom: 15px;
+	margin-left: 10px;
+	font-size: 16px;
 }
 
 #new-note-button:hover {
