@@ -22,6 +22,17 @@
 	color: #a6a6a6;
 }
 
+#signout-button {
+	border: none;
+	border-radius: 3px;
+	background-color: #a6a6a6;
+}
+
+#signout-button:hover {
+	cursor: pointer;
+	background-color: white;
+}
+
 #new-note-button {
 	background-color: #00A82D;
 	height: 36px;
@@ -32,6 +43,11 @@
 	text-align: left;
 	color: white;
 	margin: 4px 0px;
+}
+
+#new-note-button:hover {
+	cursor: pointer;
+	background-color: #03bd35;
 }
 
 #links {

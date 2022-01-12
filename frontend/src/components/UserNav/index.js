@@ -20,7 +20,7 @@ export default function UserNav({ userId }) {
 				<img id="profile-img" src="/images/profile-image.png" alt="profile" />
 				<div>
 					<div id="username-span">{user.username}</div>
-					<button onClick={e => {
+					<button id="signout-button" onClick={e => {
 						history.push("/");
 						return dispatch(logout())
 					}}>Sign Out</button>
