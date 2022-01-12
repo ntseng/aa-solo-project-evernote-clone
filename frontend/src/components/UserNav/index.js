@@ -20,38 +20,35 @@ export default function UserNav({ userId }) {
 				<img id="profile-img" src="/images/profile-image.png" alt="profile" />
 				<div>
 					<div id="username-span">{user.username}</div>
-					<button onClick={e => {
+					<button id="signout-button" onClick={e => {
 						history.push("/");
 						return dispatch(logout())
 					}}>Sign Out</button>
 				</div>
 			</li>
 			{/* <li>Search</li> */}
-			<li className="user-nav-li no-bullet">
-				<button id="new-note-button" onClick={e => {
-					history.push("/notes");
-					return dispatch(createNote({ userId, notebookId: null }));
-				}}>
-					<i className="fas fa-solid fa-plus"></i> New Note
-				</button></li>
-			<li className="user-nav-li no-bullet">
-				<div>
-					<i className="fas fa-home user-nav-icon"></i>
-					<NavLink to={`/user`} className="user-nav-link"> Home</NavLink>
-				</div>
-			</li>
-			<ul id="links">
+			<button id="new-note-button" onClick={e => {
+				history.push("/notes");
+				return dispatch(createNote({ userId, notebookId: null }));
+			}}>
+				<i className="fas fa-solid fa-plus" /> New Note
+			</button>
+			<div id="links">
 				<li className="user-nav-li no-bullet">
 					<div>
-						<i className="fas fa-solid fa-sticky-note user-nav-icon"></i>
-						<NavLink to={`/notes`} className="user-nav-link"> Notes</NavLink>
+						<NavLink to={`/user`} className="user-nav-link"><i className="fas fa-home user-nav-icon" /> Home</NavLink>
+					</div>
+				</li>
+				<li className="user-nav-li no-bullet">
+					<div>
+						<NavLink to={`/notes`} className="user-nav-link"><i className="fas fa-solid fa-sticky-note user-nav-icon" /> Notes</NavLink>
 					</div>
 				</li>
 				{/* <li className="user-nav-li no-bullet">
 					<i className="fas fa-solid fa-book user-nav-icon"></i>
 					<NavLink to={`/notebooks`} className="user-nav-link"> Notebooks</NavLink>
 				</li> */}
-			</ul>
+			</div>
 			<a id="money-button" href="https://github.com/sponsors/ntseng">Monetization Button</a>
 			<div>
 				<i className="fas fa-rocket user-nav-icon"></i>

@@ -13,6 +13,7 @@ export default function NotesListItem({ note }) {
 			return dispatch(showNote({ userId, noteId: note.id }));
 		}}>
 			<div>{note.title || "Untitled"}</div>
+			<div>{note.content}</div>
 			<div>{new Date(note.updatedAt).toTimeString()}</div>
 		</div>
 	)
