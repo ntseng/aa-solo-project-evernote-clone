@@ -35,18 +35,29 @@ export default function UserNav({ userId }) {
 			</button>
 			<div id="links">
 				<li className="user-nav-li no-bullet">
-					<div>
-						<NavLink to={`/user`} className="user-nav-link"><i className="fas fa-home user-nav-icon" /> Home</NavLink>
-					</div>
+					<NavLink to="/user" className="user-nav-link">
+						<div>
+							<span className="link-text">
+								<i className="fas fa-home user-nav-icon" /> Home
+							</span>
+						</div>
+					</NavLink>
 				</li>
 				<li className="user-nav-li no-bullet">
-					<div>
-						<NavLink to={`/notes`} className="user-nav-link"><i className="fas fa-solid fa-sticky-note user-nav-icon" /> Notes</NavLink>
-					</div>
+					<NavLink to="/notes" className="user-nav-link">
+						<div>
+							<span className="link-text">
+								<i className="fas fa-solid fa-sticky-note user-nav-icon" /> Notes
+							</span>
+						</div>
+					</NavLink>
 				</li>
 				{/* <li className="user-nav-li no-bullet">
-					<i className="fas fa-solid fa-book user-nav-icon"></i>
-					<NavLink to={`/notebooks`} className="user-nav-link"> Notebooks</NavLink>
+					<NavLink to="/notebooks" className="user-nav-link">
+						<div>
+							<i className="fas fa-solid fa-book user-nav-icon" /> Notebooks
+						</div>
+					</NavLink>
 				</li> */}
 			</div>
 			<a id="money-button" href="https://github.com/sponsors/ntseng">Monetization Button</a>
