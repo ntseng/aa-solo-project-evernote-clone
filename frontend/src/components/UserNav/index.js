@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { createNote } from "../../store/notes";
-import { restoreSession } from "../../store/session";
+import { logout, restoreSession } from "../../store/session";
 import "./UserNav.css";
 
 export default function UserNav({ userId }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const user = useSelector(state => state.session.user);
 
 	useEffect(() => {
@@ -17,7 +18,13 @@ export default function UserNav({ userId }) {
 		<div id="user-nav">
 			<li id="settings">
 				<img id="profile-img" src="/images/profile-image.png" alt="profile" />
-				<span id="username-span">{user.username}</span>
+				<div>
+					<div id="username-span">{user.username}</div>
+					<button onClick={e => {
+						history.push("/");
+						return dispatch(logout())
+					}}>Sign Out</button>
+				</div>
 			</li>
 			{/* <li>Search</li> */}
 			<li className="user-nav-li no-bullet">
