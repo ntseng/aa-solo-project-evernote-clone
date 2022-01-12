@@ -7,7 +7,7 @@ export default function NoteItem({ note }) {
 
 	return (
 		<div className="note-item" onClick={e => dispatch(showNote({ userId: user.id, noteId: note.id }))}>
-			<div>{note.title}</div>
+			<div>{note.title || "Untitled"}</div>
 			<div>{note.content}</div>
 			<div>{new Date(note.updatedAt).toTimeString()}</div>
 		</div>
