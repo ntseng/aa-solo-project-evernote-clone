@@ -18,7 +18,6 @@ export default function Navigation({ isLoaded }) {
 	} else {
 		sessionLinks = (
 			<nav id="utility-nav">
-				{/* TODO #68 demo login redirects to /user */}
 				<span className="nav-element pointer" onClick={e => {
 					history.push("/user");
 					return dispatch(demoLogin());
