@@ -29,7 +29,7 @@ export default function Navigation({ isLoaded }) {
 			<header id="navbar">
 				<div className="centered nav-element-container">
 					<li>
-						<Link exact to="/"><img id="logo" src={"/images/logo.svg"} alt="Evernote Clone logo" /></Link>
+						<Link to="/"><img id="logo" src={"/images/logo.svg"} alt="Evernote Clone logo" /></Link>
 					</li>
 					<li className="nav-element">
 						<a href="https://github.com/ntseng" className="bold">DEVELOPER</a>
