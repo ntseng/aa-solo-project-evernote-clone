@@ -16,7 +16,7 @@ export default function UserNav({ userId }) {
 	return (
 		<div id="user-nav">
 			<li id="settings">
-				<img id="profile-img" src="https://www.evernote.com/shard/s647/user/231928776/photo?size=56" alt="profile" />
+				<img id="profile-img" src="/images/profile-image.png" alt="profile" />
 				<span id="username-span">{user.username}</span>
 			</li>
 			{/* <li>Search</li> */}
