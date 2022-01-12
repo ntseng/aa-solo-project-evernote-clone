@@ -28,7 +28,10 @@ export default function UserNav({ userId }) {
 			</li>
 			{/* <li>Search</li> */}
 			<li className="user-nav-li no-bullet">
-				<button id="new-note-button" onClick={e => dispatch(createNote({ userId, notebookId: null }))}>
+				<button id="new-note-button" onClick={e => {
+					history.push("/notes");
+					return dispatch(createNote({ userId, notebookId: null }));
+				}}>
 					<i className="fas fa-solid fa-plus"></i> New Note
 				</button></li>
 			<li className="user-nav-li no-bullet">
