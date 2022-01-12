@@ -62,17 +62,24 @@
 	color: #a6a6a6;
 	text-decoration: none;
 	width: 100%;
+	line-height: 30px;
 }
 
 .user-nav-li {
-	height: 32px;
 	width: 100%;
 	position: sticky;
 }
 
 .active {
-	background-color: #cccccc;
 	color: #ffffff;
+}
+
+.active div {
+	background-color: #404040;
+}
+
+.link-text {
+	margin-left: 20px;
 }
 
 #money-button {
