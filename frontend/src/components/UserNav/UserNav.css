@@ -96,6 +96,8 @@
 #get-started {
 	text-decoration: none;
 	color: #a6a6a6;
+	margin-left: 10px;
+	padding: 10px;
 }
 
 .user-nav-icon {
