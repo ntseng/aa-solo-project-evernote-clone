@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { demoLogin } from "../../store/session";
 import ProfileButton from "./ProfileButton";
 
@@ -7,6 +7,7 @@ import "./NavBar.css";
 
 export default function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
 
 	let sessionLinks;
@@ -18,7 +19,10 @@ export default function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<nav id="utility-nav">
 				{/* TODO #68 demo login redirects to /user */}
-				<span className="nav-element pointer" onClick={e => dispatch(demoLogin())}>Demo Login</span>
+				<span className="nav-element pointer" onClick={e => {
+					history.push("/user");
+					return dispatch(demoLogin());
+				}}>Demo Login</span>
 				<NavLink className="nav-element" id="login" to="/login">Log In</NavLink>
 				<a className="nav-element" id="github-button" href="https://github.com/ntseng/aa-solo-react-project">GitHub</a>
 			</nav>
