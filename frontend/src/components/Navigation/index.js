@@ -35,7 +35,7 @@ export default function Navigation({ isLoaded }) {
 						<a href="https://github.com/ntseng" className="bold">DEVELOPER</a>
 					</li>
 					<li className="nav-element bold">
-						<span>TECH STACK</span>
+						<a href="https://github.com/ntseng/aa-solo-react-project/wiki/Tech-Stack">TECH STACK</a>
 					</li>
 					{isLoaded && sessionLinks}
 				</div>
