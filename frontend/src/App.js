@@ -11,6 +11,7 @@ import UserNav from "./components/UserNav";
 import UserPage from "./components/UserPage";
 import NotesNav from "./components/Notes/NotesNav";
 import NotesEditor from "./components/Notes/NotesEditor";
+import CalendarBanner from "./components/Navigation/CalendarBanner";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
 				<Switch>
 					<Route exact path="/">
 						<Navigation isLoaded={isLoaded} />
+						<CalendarBanner />
 						<ValueProp />
 						<HeroRow />
 					</Route>
@@ -53,6 +55,11 @@ function App() {
 								<NotesEditor />
 							</>)}
 						</div>)}
+					</Route>
+					<Route>
+						<Navigation isLoaded={isLoaded} />
+						<img src="/images/404.svg" alt="404" />
+						<div>Hmm... something's disconnected</div>
 					</Route>
 				</Switch>
 			)}
