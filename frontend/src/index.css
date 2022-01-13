@@ -203,3 +203,10 @@
 #delete:hover {
 	background-color: red;
 }
+
+#content-404 {
+	position: absolute;
+	top: 40%;
+	right: 50px;
+	width: 350px;
+}
