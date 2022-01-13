@@ -67,7 +67,7 @@ export default function SignUpFormPage() {
 				/>
 				<button type="submit" id="continue-button">Continue</button>
 			</form>
-			<span id="disclaimer">A real site would say "By creating an account, you are agreeing to our <Link to="/" className="switch-link">Terms of Service</Link> and <Link to="/" className="switch-link">Privacy Policy</Link>."</span>
+			<span id="disclaimer">No ToS or Privacy Policy, but maybe you'd like to <Link to="/" className="switch-link">Go Home</Link> or view the <Link to="/404" className="switch-link">404 Page</Link>.</span>
 			<span>Already have an account?</span>
 			<Link to="/login" className="switch-link">Sign in</Link>
 		</div>

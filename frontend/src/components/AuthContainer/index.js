@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LoginFormPage from "../LoginFormPage";
 import SignUpFormPage from "../SignUpFormPage";
 
@@ -16,8 +17,8 @@ export default function AuthContainer({ newAccount }) {
 								</div>
 							</div>
 							<div className="footer wrapper">
-								<span id="tos-link">Terms of Service</span>
-								<span id="privacy-link">Privacy Policy</span>
+								<Link id="tos-link" to="/">Go Home</Link>
+								<Link id="privacy-link" to="/404">404 Page</Link>
 								<span className="footer-entry">Student Project by Nathaniel Tseng. No rights claimed.</span>
 							</div>
 						</div>
