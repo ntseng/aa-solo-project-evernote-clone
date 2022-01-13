@@ -108,7 +108,9 @@ export function trashNote({ noteId }) {
 	}
 }
 
-export default function notesReducer(stateDotNotes = {}, action) {
+const INITIAL_STATE = { currentNote: {} }
+
+export default function notesReducer(stateDotNotes = INITIAL_STATE, action) {
 	let updatedState = { ...stateDotNotes };
 	switch (action.type) {
 		case GET_NOTES:

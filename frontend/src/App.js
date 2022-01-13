@@ -12,6 +12,7 @@ import UserPage from "./components/UserPage";
 import NotesNav from "./components/Notes/NotesNav";
 import NotesEditor from "./components/Notes/NotesEditor";
 import CalendarBanner from "./components/Navigation/CalendarBanner";
+import Notebooks from "./components/Notebooks";
 
 function App() {
 	const dispatch = useDispatch();
@@ -41,19 +42,25 @@ function App() {
 					<Route path="/signup">
 						<AuthContainer newAccount={true} />
 					</Route>
-					<Route exact path="/user/">
+					<Route exact path="/user">
 						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
 							<UserPage />
 						</div>)}
 					</Route>
-					<Route path="/notes/">
+					<Route path="/notes">
 						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
 							<NotesNav userId={user.id} />
 							{hasCurrentNote && (<>
 								<NotesEditor />
 							</>)}
+						</div>)}
+					</Route>
+					<Route path="/notebooks">
+						{user && (<div id="main-container">
+							<UserNav userId={user.id} />
+							<Notebooks />
 						</div>)}
 					</Route>
 					<Route>

@@ -204,6 +204,10 @@
 	background-color: red;
 }
 
+#notebooks-page {
+	width: 100%;
+}
+
 #content-404 {
 	position: absolute;
 	top: 40%;

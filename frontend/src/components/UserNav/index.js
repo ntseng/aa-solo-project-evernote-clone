@@ -52,13 +52,15 @@ export default function UserNav({ userId }) {
 						</div>
 					</NavLink>
 				</li>
-				{/* <li className="user-nav-li no-bullet">
+				<li className="user-nav-li no-bullet">
 					<NavLink to="/notebooks" className="user-nav-link">
 						<div>
-							<i className="fas fa-solid fa-book user-nav-icon" /> Notebooks
+							<span className="link-text">
+								<i className="fas fa-solid fa-book user-nav-icon" /> Notebooks
+							</span>
 						</div>
 					</NavLink>
-				</li> */}
+				</li>
 			</div>
 			<a id="money-button" href="https://github.com/sponsors/ntseng"><i class="fas fa-bolt" /> Monetization Button</a>
 			<a id="get-started" href="https://github.com/ntseng/aa-solo-react-project/blob/main/README.md"><i className="fas fa-rocket user-nav-icon" /> Get Started</a>
