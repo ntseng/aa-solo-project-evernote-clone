@@ -11,6 +11,7 @@ import UserNav from "./components/UserNav";
 import UserPage from "./components/UserPage";
 import NotesNav from "./components/Notes/NotesNav";
 import NotesEditor from "./components/Notes/NotesEditor";
+import CalendarBanner from "./components/Navigation/CalendarBanner";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
 				<Switch>
 					<Route exact path="/">
 						<Navigation isLoaded={isLoaded} />
+						<CalendarBanner />
 						<ValueProp />
 						<HeroRow />
 					</Route>
@@ -53,6 +55,15 @@ function App() {
 								<NotesEditor />
 							</>)}
 						</div>)}
+					</Route>
+					<Route>
+						<Navigation isLoaded={isLoaded} />
+						<img src="/images/404.svg" alt="404" />
+						<div id="content-404">
+							<h1>Hmm... something's disconnected</h1>
+							<p>We can't find the page you asked for. Please check the URL or plug back into the homepage.</p>
+							<button className="cta" onClick={e => history.push("/")}>HOMEPAGE</button>
+						</div>
 					</Route>
 				</Switch>
 			)}
