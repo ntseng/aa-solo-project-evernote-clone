@@ -172,6 +172,10 @@
 	flex-direction: column;
 }
 
+#placeholder-container {
+	width: 100%;
+}
+
 #title-input {
 	width: 95%;
 	border: none;
