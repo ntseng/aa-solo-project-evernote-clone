@@ -37,7 +37,7 @@ export default function LoginFormPage() {
 			<form className="login-form"
 				onSubmit={handleSubmission}>
 				<ul>
-					{errors.map((error, index) => <li key={index}>{error}</li>)}
+					{errors.map((error, index) => <li key={index} className="error-message">{error}</li>)}
 				</ul>
 				<input type="text" className="text-input"
 					placeholder="Email address or username"
