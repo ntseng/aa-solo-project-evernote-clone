@@ -1,13 +1,23 @@
-export default function Notebooks() {
-	//TODONOW fetchNotebooks
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchNotebooks } from "../../store/notebooks";
+
+export default function Notebooks({ userId }) {
+	const dispatch = useDispatch();
+	const notebooks = useSelector(state => state.notebooks);
+
+	useEffect(() => {
+		dispatch(fetchNotebooks({ userId }));
+	}, [dispatch, userId])
+
 	return (
 		<div id="notebooks-page">
 			<div id="notebook-heading">
 				<div>Notebooks</div>
-				{/* <input placeholder="Find Notebooks..."></input> */}
+				{notebooks ? Object.values(notebooks).map((notebook, index) => (<div key={index}>{notebook.title}</div>)) : "No notebooks yet..."}
 			</div>
 			<div id="notebooks-list">
-				{}
+				{ }
 			</div>
 		</div>
 	)

@@ -60,7 +60,7 @@ function App() {
 					<Route path="/notebooks">
 						{user && (<div id="main-container">
 							<UserNav userId={user.id} />
-							<Notebooks />
+							<Notebooks userId={user.id} />
 						</div>)}
 					</Route>
 					<Route>
