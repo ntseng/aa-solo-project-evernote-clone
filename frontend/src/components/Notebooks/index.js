@@ -1,4 +1,5 @@
 export default function Notebooks() {
+	//TODONOW fetchNotebooks
 	return (
 		<div id="notebooks-page">
 			<div id="notebook-heading">
