@@ -92,3 +92,16 @@
 .user-nav-icon {
 	color: #a6a6a6;
 }
+
+#note-creation-feedback {
+	position: absolute;
+	background-color: grey;
+	padding: 20px;
+	left: 13%;
+	top: 5%;
+	border-radius: 4px;
+}
+
+.hidden {
+	display: none;
+}
