@@ -60,7 +60,7 @@ export default function UserNav({ userId }) {
 					</NavLink>
 				</li> */}
 			</div>
-			<a id="money-button" href="https://github.com/sponsors/ntseng"><i class="fas fa-bolt" /> Monetization Button</a>
+			<a id="money-button" href="https://github.com/sponsors/ntseng"><i className="fas fa-bolt" /> Monetization Button</a>
 			<a id="get-started" href="https://github.com/ntseng/aa-solo-react-project/blob/main/README.md"><i className="fas fa-rocket user-nav-icon" /> Get Started</a>
 		</div>
 	)
