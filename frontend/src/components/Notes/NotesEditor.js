@@ -9,6 +9,10 @@ export default function NotesEditor() {
 	const [content, setContent] = useState("");
 
 	useEffect(() => {
+		document.title = "Notes - Evernote Clone";
+	}, [])
+
+	useEffect(() => {
 		if (note) {
 			setTitle(note.title);
 			setContent(note.content);

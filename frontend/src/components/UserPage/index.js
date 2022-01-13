@@ -8,6 +8,10 @@ export default function UserPage() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		document.title = "Home - Evernote Clone";
+	}, [])
+
+	useEffect(() => {
 		dispatch(restoreSession())
 	}, [dispatch])
 

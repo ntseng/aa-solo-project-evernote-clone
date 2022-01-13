@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
@@ -13,6 +13,10 @@ export default function SignUpFormPage() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
+
+	useEffect(() => {
+		document.title = "Create an Evernote Clone Account";
+	}, [])
 
 	if (sessionUser) return (
 		<Redirect to="/user" />
