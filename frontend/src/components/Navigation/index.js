@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
 import { demoLogin } from "../../store/session";
-import ProfileButton from "./ProfileButton";
 
 import "./NavBar.css";
 
@@ -12,9 +11,7 @@ export default function Navigation({ isLoaded }) {
 
 	let sessionLinks;
 	if (sessionUser) {
-		sessionLinks = (
-			<ProfileButton user={sessionUser} />
-		)
+		return (<Redirect to="/user" />)
 	} else {
 		sessionLinks = (
 			<nav id="utility-nav">
