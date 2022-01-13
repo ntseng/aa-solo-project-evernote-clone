@@ -3,7 +3,6 @@ import { csrfFetch } from "./csrf";
 const GET_NOTEBOOKS = "notebooks/get";
 const ADD_NOTEBOOK = "notebooks/add";
 const EDIT_NOTEBOOK = "notebooks/edit";
-//TODO #111 note association thunk
 const DELETE_NOTEBOOK = "notebooks/delete";
 
 const getNotebooks = notebooks => ({

@@ -28,7 +28,7 @@ router.post("/", asyncHandler(async (req, res) => {
 	})
 }))
 
-router.put("/", asyncHandler(async (req, res) => { //TODO #110 create table detailing which notes belong to which notebooks
+router.put("/", asyncHandler(async (req, res) => {
 	const { notebookId, title } = req.body;
 	const notebook = await Notebook.findByPk(notebookId);
 	if (notebook) {
@@ -44,8 +44,6 @@ router.put("/", asyncHandler(async (req, res) => { //TODO #110 create table deta
 		return res.json({});
 	}
 }))
-
-//TODO #109 api route for updating notes belonging to notebooks
 
 router.delete("/", asyncHandler(async (req, res) => {
 	const { notebookId } = req.body;
