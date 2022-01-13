@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Switch, useHistory } from "react-router-dom";
 
 import { restoreSession } from "./store/session";
@@ -7,20 +7,13 @@ import Navigation from "./components/Navigation";
 import ValueProp from "./components/Landing/valueProp";
 import HeroRow from "./components/Landing/heroRow";
 import AuthContainer from "./components/AuthContainer";
-import UserNav from "./components/UserNav";
-import UserPage from "./components/UserPage";
-import NotesNav from "./components/Notes/NotesNav";
-import NotesEditor from "./components/Notes/NotesEditor";
 import CalendarBanner from "./components/Navigation/CalendarBanner";
-import Notebooks from "./components/Notebooks";
+import UserRoutes from "./components/UserRoutes";
 
 function App() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [isLoaded, setIsLoaded] = useState(false);
-	const user = useSelector(state => state.session.user);
-	const currentNote = useSelector(state => state.notes.currentNote);
-	const hasCurrentNote = !!currentNote && !!Object.entries(currentNote).length;
 
 	useEffect(() => {
 		dispatch(restoreSession()).then(() => setIsLoaded(true));
@@ -42,26 +35,8 @@ function App() {
 					<Route path="/signup">
 						<AuthContainer newAccount={true} />
 					</Route>
-					<Route exact path="/user">
-						{user && (<div id="main-container">
-							<UserNav userId={user.id} />
-							<UserPage />
-						</div>)}
-					</Route>
-					<Route path="/notes">
-						{user && (<div id="main-container">
-							<UserNav userId={user.id} />
-							<NotesNav userId={user.id} />
-							{hasCurrentNote && (<>
-								<NotesEditor />
-							</>)}
-						</div>)}
-					</Route>
-					<Route path="/notebooks">
-						{user && (<div id="main-container">
-							<UserNav userId={user.id} />
-							<Notebooks userId={user.id} />
-						</div>)}
+					<Route exact path={["/user", "/notes", "/notebooks"]}>
+						<UserRoutes />
 					</Route>
 					<Route>
 						<Navigation isLoaded={isLoaded} />

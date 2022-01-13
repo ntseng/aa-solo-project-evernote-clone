@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { createNote } from "../../store/notes";
 import { logout, restoreSession } from "../../store/session";
 import "./UserNav.css";
