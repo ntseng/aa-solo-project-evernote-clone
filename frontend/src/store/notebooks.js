@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_NOTEBOOKS = "notebooks/get";
 const ADD_NOTEBOOK = "notebooks/add";
+const EDIT_NOTEBOOK = "notebooks/edit";
 
 const getNotebooks = notebooks => ({
 	type: GET_NOTEBOOKS,
@@ -41,6 +42,29 @@ export function createNotebook({ userId }) {
 	}
 }
 
+const putNotebook = notebook => ({
+	type: EDIT_NOTEBOOK,
+	notebook
+})
+
+export function editNotebook({ notebookId, title }) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/notebooks", {
+			method: "PUT",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				notebookId,
+				title
+			})
+		})
+
+		if (response.ok) {
+			const { notebook } = await response.json();
+			dispatch(putNotebook(notebook));
+		}
+	}
+}
+
 const INITIAL_STATE = {};
 
 export default function notebooksReducer(stateDotNotebooks = INITIAL_STATE, action) {
@@ -52,6 +76,7 @@ export default function notebooksReducer(stateDotNotebooks = INITIAL_STATE, acti
 			})
 			return updatedState;
 		case ADD_NOTEBOOK:
+		case EDIT_NOTEBOOK:
 			updatedState[action.notebook.id] = action.notebook;
 			return updatedState;
 		default:
