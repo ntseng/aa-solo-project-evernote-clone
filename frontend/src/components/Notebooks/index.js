@@ -7,6 +7,10 @@ export default function Notebooks({ userId }) {
 	const notebooks = useSelector(state => state.notebooks);
 
 	useEffect(() => {
+		document.title = "Notebooks - Evernote Clone";
+	}, [])
+
+	useEffect(() => {
 		dispatch(fetchNotebooks({ userId }));
 	}, [dispatch, userId])
 
