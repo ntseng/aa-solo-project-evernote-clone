@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import { restoreSession } from "./store/session";
 import Navigation from "./components/Navigation";
@@ -9,10 +9,10 @@ import HeroRow from "./components/Landing/heroRow";
 import AuthContainer from "./components/AuthContainer";
 import CalendarBanner from "./components/Navigation/CalendarBanner";
 import UserRoutes from "./components/UserRoutes";
+import NotFound from "./components/NotFound";
 
 function App() {
 	const dispatch = useDispatch();
-	const history = useHistory();
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	useEffect(() => {
@@ -40,12 +40,7 @@ function App() {
 					</Route>
 					<Route>
 						<Navigation isLoaded={isLoaded} />
-						<img src="/images/404.svg" alt="404" />
-						<div id="content-404">
-							<h1>Hmm... something's disconnected</h1>
-							<p>We can't find the page you asked for. Please check the URL or plug back into the homepage.</p>
-							<button className="cta" onClick={e => history.push("/")}>HOMEPAGE</button>
-						</div>
+						<NotFound />
 					</Route>
 				</Switch>
 			)}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
@@ -11,6 +11,10 @@ export default function LoginFormPage() {
 	const [credential, setCredential] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
+
+	useEffect(() => {
+		document.title = "Welcome Back"
+	}, [])
 
 	if (sessionUser) {
 		return (<Redirect to="/user" />)

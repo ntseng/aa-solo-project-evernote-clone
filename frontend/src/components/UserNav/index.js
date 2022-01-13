@@ -11,6 +11,10 @@ export default function UserNav({ userId }) {
 	const user = useSelector(state => state.session.user);
 
 	useEffect(() => {
+		document.title = "Evernote Clone Web";
+	}, [])
+
+	useEffect(() => {
 		dispatch(restoreSession())
 	}, [dispatch])
 
