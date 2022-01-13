@@ -47,4 +47,14 @@ router.put("/", asyncHandler(async (req, res) => { //TODO #110 create table deta
 
 //TODO #109 api route for updating notes belonging to notebooks
 
+router.delete("/", asyncHandler(async (req, res) => {
+	const { notebookId } = req.body;
+	const notebook = await Notebook.findByPk(notebookId);
+	await notebook.destroy();
+
+	return res.json({
+		notebookId
+	})
+}))
+
 module.exports = router;

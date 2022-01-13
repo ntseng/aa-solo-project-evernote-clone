@@ -3,6 +3,8 @@ import { csrfFetch } from "./csrf";
 const GET_NOTEBOOKS = "notebooks/get";
 const ADD_NOTEBOOK = "notebooks/add";
 const EDIT_NOTEBOOK = "notebooks/edit";
+//TODO #111 note association thunk
+const DELETE_NOTEBOOK = "notebooks/delete";
 
 const getNotebooks = notebooks => ({
 	type: GET_NOTEBOOKS,
@@ -65,6 +67,28 @@ export function editNotebook({ notebookId, title }) {
 	}
 }
 
+const deleteNotebook = notebookId => ({
+	type: DELETE_NOTEBOOK,
+	notebookId
+})
+
+export function trashNotebook({ notebookId }) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/notebooks", {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				notebookId
+			})
+		})
+
+		if (response.ok) {
+			const { notebookId: deletedNotebookId } = await response.json();
+			dispatch(deleteNotebook(deletedNotebookId));
+		}
+	}
+}
+
 const INITIAL_STATE = {};
 
 export default function notebooksReducer(stateDotNotebooks = INITIAL_STATE, action) {
@@ -78,6 +102,9 @@ export default function notebooksReducer(stateDotNotebooks = INITIAL_STATE, acti
 		case ADD_NOTEBOOK:
 		case EDIT_NOTEBOOK:
 			updatedState[action.notebook.id] = action.notebook;
+			return updatedState;
+		case DELETE_NOTEBOOK:
+			delete updatedState[action.notebookId];
 			return updatedState;
 		default:
 			return stateDotNotebooks;
