@@ -16,4 +16,16 @@ router.get("/:userId(\\d+)", asyncHandler(async (req, res) => {
 	})
 }))
 
+router.post("/", asyncHandler(async (req, res) => {
+	const { userId } = req.body;
+	const notebook = await Notebook.create({
+		userId,
+		title: ""
+	})
+
+	return res.json({
+		notebook
+	})
+}))
+
 module.exports = router;
