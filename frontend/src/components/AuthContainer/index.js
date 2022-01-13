@@ -19,7 +19,7 @@ export default function AuthContainer({ newAccount }) {
 							<div className="footer wrapper">
 								<Link id="tos-link" to="/">Go Home</Link>
 								<Link id="privacy-link" to="/404">404 Page</Link>
-								<span className="footer-entry">Student Project by Nathaniel Tseng. No rights claimed.</span>
+								<span className="footer-entry">Student Project by Nathaniel Tseng.</span>
 							</div>
 						</div>
 					</div>
