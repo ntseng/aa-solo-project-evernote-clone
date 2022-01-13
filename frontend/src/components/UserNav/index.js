@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { createNote } from "../../store/notes";
 import { logout, restoreSession } from "../../store/session";
 import "./UserNav.css";
@@ -54,9 +54,9 @@ export default function UserNav({ userId }) {
 				</li>
 				{/* <li className="user-nav-li no-bullet">
 					<NavLink to="/notebooks" className="user-nav-link">
-						<div>
-							<i className="fas fa-solid fa-book user-nav-icon" /> Notebooks
-						</div>
+					<div>
+					<i className="fas fa-solid fa-book user-nav-icon" /> Notebooks
+					</div>
 					</NavLink>
 				</li> */}
 			</div>
