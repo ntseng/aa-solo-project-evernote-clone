@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
-import { demoLogin } from "../../store/session";
+import { demoLogin } from "../store/session";
 
-import "./NavBar.css";
+import "./css/NavBar.css";
 
 export default function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();

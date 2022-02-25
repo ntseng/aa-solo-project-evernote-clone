@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom"
-import Notebooks from "../Notebooks";
-import NotesEditor from "../Notes/NotesEditor";
-import NotesNav from "../Notes/NotesNav"
-import UserNav from "../UserNav"
-import UserPage from "../UserPage"
+import Notebooks from "./Notebooks";
+import NotesEditor from "./NotesEditor";
+import NotesNav from "./NotesNav"
+import UserNav from "./UserNav"
+import UserPage from "./UserPage"
 
 export default function UserRoutes() {
 	const user = useSelector(state => state.session.user);

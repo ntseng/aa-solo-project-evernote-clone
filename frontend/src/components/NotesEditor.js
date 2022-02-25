@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editNote, trashNote } from "../../store/notes";
+import { editNote, trashNote } from "../store/notes";
 
 export default function NotesEditor() {
 	const dispatch = useDispatch();
