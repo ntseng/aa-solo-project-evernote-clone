@@ -10,7 +10,9 @@ export default function NotesNav({ userId }) {
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: userId })).then(firstNote => {
-			dispatch(showNote(firstNote))
+			if (firstNote) {
+				dispatch(showNote(firstNote))
+			}
 		});
 	}, [dispatch, userId])
 
