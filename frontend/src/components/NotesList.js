@@ -11,7 +11,9 @@ export default function NotesList() {
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: user.id })).then(firstNote => {
-			dispatch(showNote(firstNote));
+			if (firstNote) {
+				dispatch(showNote(firstNote));
+			}
 		});
 	}, [dispatch, user.id])
 
