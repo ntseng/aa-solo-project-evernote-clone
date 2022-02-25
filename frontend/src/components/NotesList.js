@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { fetchNotes } from "../../store/notes";
+import { fetchNotes } from "../store/notes";
 import NotesListItem from "./NotesListItem";
 
 export default function NotesList() {
@@ -11,7 +11,7 @@ export default function NotesList() {
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: user.id }));
-	}, [])
+	}, [dispatch, user.id])
 
 	return (
 		<div id="notes-list">

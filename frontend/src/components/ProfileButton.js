@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
-import { logout } from "../../store/session";
+import { logout } from "../store/session";
 
 export default function ProfileButton({ user }) {
 	const dispatch = useDispatch();

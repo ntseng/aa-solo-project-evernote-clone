@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNotes } from "../../store/notes";
+import { fetchNotes } from "../store/notes";
 import NoteItem from "./NoteItem";
 
 export default function NotesNav({ userId }) {

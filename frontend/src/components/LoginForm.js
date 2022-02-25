@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
-import "./LoginForm.css";
-import { login } from "../../store/session.js";
+import "./css/LoginForm.css";
+import { login } from "../store/session.js";
 
-export default function LoginFormPage() {
+export default function LoginForm() {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
 	const [credential, setCredential] = useState("");

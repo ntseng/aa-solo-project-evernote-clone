@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import { createNote } from "../../store/notes";
-import { logout, restoreSession } from "../../store/session";
-import "./UserNav.css";
+import { createNote } from "../store/notes";
+import { logout, restoreSession } from "../store/session";
+import "./css/UserNav.css";
 
 export default function UserNav({ userId }) {
 	const dispatch = useDispatch();

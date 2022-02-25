@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 
-import "./SignUpForm.css";
-import { signUp } from "../../store/session.js";
+import "./css/SignUpForm.css";
+import { signUp } from "../store/session.js";
 
-export default function SignUpFormPage() {
+export default function SignUpForm() {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
 	const [username, setUsername] = useState("");

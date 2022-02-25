@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchNotebooks } from "../../store/notebooks";
+import { fetchNotebooks } from "../store/notebooks";
 
 export default function Notebooks({ userId }) {
 	const dispatch = useDispatch();
