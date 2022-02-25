@@ -26,9 +26,9 @@ export default function UserRoutes() {
 					{user && (<div id="main-container">
 						<UserNav userId={user.id} />
 						<NotesNav userId={user.id} />
-						{hasCurrentNote && (<>
+						{hasCurrentNote ? (<>
 							<NotesEditor />
-						</>)}
+						</>) : (<div id="placeholder-container"></div>)}
 					</div>)}
 				</Route>
 				<Route path="/notebooks">

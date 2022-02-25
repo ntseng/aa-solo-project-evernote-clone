@@ -172,6 +172,10 @@
 	flex-direction: column;
 }
 
+#placeholder-container {
+	width: 100%;
+}
+
 #title-input {
 	width: 95%;
 	border: none;
@@ -200,12 +204,27 @@
 	width: 25%;
 }
 
-#delete:hover {
+.delete-style {
+	margin: 10px;
+	border-radius: 15px;
+	border: none;
+	background-color: #1a1a1a;
+	color: white;
+}
+
+.delete-style:hover {
 	background-color: red;
 }
 
 #notebooks-page {
 	width: 100%;
+}
+
+#confirm-delete-container {
+	position: absolute;
+	bottom: 5%;
+	border: 1px solid grey;
+	border-radius: 5px;
 }
 
 #content-404 {

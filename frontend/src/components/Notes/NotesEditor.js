@@ -7,6 +7,7 @@ export default function NotesEditor() {
 	let note = useSelector(state => state.notes.currentNote);
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
+	const [hideConfirmDelete, setHideConfirmDelete] = useState(true);
 
 	useEffect(() => {
 		document.title = "Notes - Evernote Clone";
@@ -23,7 +24,7 @@ export default function NotesEditor() {
 	}, [note])
 
 	return (
-		<div id="editor-container">
+		<div id="editor-container" onClick={e => setHideConfirmDelete(true)}>
 			<input placeholder="Title" id="title-input"
 				value={title}
 				onChange={e => setTitle(e.target.value)}
@@ -34,7 +35,14 @@ export default function NotesEditor() {
 				onChange={e => setContent(e.target.value)}
 				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title, content }))}
 			/>
-			<button id="delete" onClick={e => dispatch(trashNote({ noteId: note.id }))}>Delete</button>
+			<button id="delete" className="delete-style" onClick={e => {
+				e.stopPropagation();
+				setHideConfirmDelete(false);
+			}}>Delete</button>
+			<div id="confirm-delete-container" hidden={hideConfirmDelete}>
+				<div>Really Delete?</div>
+				<button id="confirm-delete" className="delete-style" onClick={e => dispatch(trashNote({ noteId: note.id }))}>Yes, delete this note</button>
+			</div>
 		</div>
 	)
 }

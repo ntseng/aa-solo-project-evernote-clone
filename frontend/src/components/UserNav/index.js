@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { createNote } from "../../store/notes";
 import { logout, restoreSession } from "../../store/session";
 import "./UserNav.css";
@@ -32,6 +32,11 @@ export default function UserNav({ userId }) {
 			</li>
 			{/* <li>Search</li> */}
 			<button id="new-note-button" onClick={e => {
+				let popup = document.querySelector("#note-creation-feedback");
+				popup.classList.remove("hidden");
+				setTimeout((element) => {
+					element.classList.add("hidden");
+				}, 1500, popup)
 				history.push("/notes");
 				return dispatch(createNote({ userId, notebookId: null }));
 			}}>
@@ -66,8 +71,8 @@ export default function UserNav({ userId }) {
 					</NavLink>
 				</li>
 			</div>
-			<a id="money-button" href="https://github.com/sponsors/ntseng"><i className="fas fa-bolt" /> Monetization Button</a>
 			<a id="get-started" href="https://github.com/ntseng/aa-solo-react-project/blob/main/README.md"><i className="fas fa-rocket user-nav-icon" /> Get Started</a>
+			<div id="note-creation-feedback" className="hidden">New note created!</div>
 		</div>
 	)
 }

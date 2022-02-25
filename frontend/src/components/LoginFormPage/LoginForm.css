@@ -9,6 +9,10 @@
 	flex-direction: column;
 }
 
+.error-message {
+	color: red;
+}
+
 #login-h1 {
 	margin-bottom: 20px;
 }
