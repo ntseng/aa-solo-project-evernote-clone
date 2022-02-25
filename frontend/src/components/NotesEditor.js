@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editNote, trashNote } from "../store/notes";
+import { showNote } from "../store/selected";
 
 export default function NotesEditor() {
 	const dispatch = useDispatch();
-	let note = useSelector(state => state.notes.currentNote);
+	let note = useSelector(state => state.selected.note);
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const [hideConfirmDelete, setHideConfirmDelete] = useState(true);
@@ -41,7 +42,7 @@ export default function NotesEditor() {
 			}}>Delete</button>
 			<div id="confirm-delete-container" hidden={hideConfirmDelete}>
 				<div>Really Delete?</div>
-				<button id="confirm-delete" className="delete-style" onClick={e => dispatch(trashNote({ noteId: note.id }))}>Yes, delete this note</button>
+				<button id="confirm-delete" className="delete-style" onClick={e => { dispatch(trashNote({ noteId: note.id })); dispatch(showNote({})) }}>Yes, delete this note</button>
 			</div>
 		</div>
 	)
