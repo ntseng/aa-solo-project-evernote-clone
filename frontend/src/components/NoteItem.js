@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { showNote } from "../store/notes";
+import { showNote } from "../store/selected";
 
 export default function NoteItem({ note }) {
 	const dispatch = useDispatch();

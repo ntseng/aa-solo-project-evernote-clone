@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { createNote } from "../store/notes";
+import { showNote } from "../store/selected";
 import { logout, restoreSession } from "../store/session";
 import "./css/UserNav.css";
 
@@ -38,7 +39,9 @@ export default function UserNav({ userId }) {
 					element.classList.add("hidden");
 				}, 1500, popup)
 				history.push("/notes");
-				return dispatch(createNote({ userId, notebookId: null }));
+				return dispatch(createNote({ userId, notebookId: null })).then(note => {
+					dispatch(showNote(note));
+				});
 			}}>
 				<i className="fas fa-solid fa-plus" /> New Note
 			</button>

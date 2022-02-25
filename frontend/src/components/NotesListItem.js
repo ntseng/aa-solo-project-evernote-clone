@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
-import { showNote } from "../store/notes";
+import { showNote } from "../store/selected";
 
 export default function NotesListItem({ note }) {
 	const history = useHistory();

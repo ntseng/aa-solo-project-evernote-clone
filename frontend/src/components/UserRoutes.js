@@ -8,8 +8,7 @@ import UserPage from "./UserPage"
 
 export default function UserRoutes() {
 	const user = useSelector(state => state.session.user);
-	const currentNote = useSelector(state => state.notes.currentNote);
-	const hasCurrentNote = !!currentNote && !!Object.entries(currentNote).length;
+	const currentNote = useSelector(state => state.selected.note);
 
 	if (!user) {
 		return (<Redirect to="/" />)
@@ -26,7 +25,7 @@ export default function UserRoutes() {
 					{user && (<div id="main-container">
 						<UserNav userId={user.id} />
 						<NotesNav userId={user.id} />
-						{hasCurrentNote ? (<>
+						{currentNote ? (<>
 							<NotesEditor />
 						</>) : (<div id="placeholder-container"></div>)}
 					</div>)}
