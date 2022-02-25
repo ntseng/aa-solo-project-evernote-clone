@@ -14,21 +14,24 @@ export default function ConfirmDeleteModal({ noteId }) {
 		dispatch(hideModal());
 	}
 
-	return (<div id="new-list-container">
-		<div id="new-list-title">Delete note</div>
-		<button id="x-button"
-			onClick={closeModal}
-		>
-			<i className="fa-solid fa-x" />
-		</button>
-		<div id="list-modal-instructions">{`Are you sure you wish to delete this note?`}</div>
-		<div>
-			<button id="new-list-add-button"
+	return (<div id="modal-container">
+		<div id="modal-title-container">
+			<h2 id="modal-title">Delete permanently?</h2>
+			<button id="modal-x-button"
+				onClick={closeModal}
+			>
+				<i className="fa-solid fa-x" />
+			</button>
+		</div>
+		<div id="modal-instructions">{"Warning: The note will be gone forever. This action cannot be undone, even by Evernote Clone."}</div>
+		<hr />
+		<div id="modal-button-container">
+			<button id="modal-delete-button"
 				onClick={deleteNote}
 			>
-				Yes, delete note
+				Delete
 			</button>
-			<button id="new-list-cancel-button"
+			<button id="modal-cancel-button"
 				onClick={closeModal}
 			>
 				Cancel
