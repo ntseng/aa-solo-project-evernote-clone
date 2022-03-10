@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { trashNote } from "../store/notes";
 import { hideModal, hideNote } from "../store/selected";
