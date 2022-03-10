@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { fetchNotes } from "../store/notes";
 import { showNote } from "../store/selected";
 import NoteItem from "./NoteItem";
 
 export default function NotesNav({ userId }) {
+	const { notebookId } = useParams();
 	const dispatch = useDispatch();
-	const notes = useSelector(state => Object.values(state.notes));
+	const notes = useSelector(state => Object.values(state.notes).filter(note => !notebookId || note.notebookId === notebookId));
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: userId })).then(firstNote => {
