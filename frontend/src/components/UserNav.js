@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { searchNotebooks } from "../store/notebooks";
 import { createNote } from "../store/notes";
 import { showNote } from "../store/selected";
 import { logout, restoreSession } from "../store/session";
@@ -33,7 +34,12 @@ export default function UserNav({ userId }) {
 					}}>Sign Out</button>
 				</div>
 			</li>
-			{/* <li><input placeholder="Search..."/></li> */}
+			<li>
+				<input id="search-input"
+					placeholder="Search notebooks..."
+					onChange={event => dispatch(searchNotebooks({ userId: user.id, searchTerm: event.target.value }))}
+				/>
+			</li>
 			<button id="new-note-button" onClick={e => {
 				let popup = document.querySelector("#note-creation-feedback");
 				popup.classList.remove("hidden");
