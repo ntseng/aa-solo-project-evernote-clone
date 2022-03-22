@@ -1,6 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { Op } = require("sequelize");
+const db = require("../../db/models");
 
 const { Notebook } = require("../../db/models");
 
@@ -9,7 +10,8 @@ const router = express.Router();
 router.get("/:userId(\\d+)", asyncHandler(async (req, res) => {
 	const { userId } = req.params;
 	const notebooks = await Notebook.findAll({
-		where: { userId }
+		where: { userId },
+		include: db.User
 	})
 
 	return res.json({
