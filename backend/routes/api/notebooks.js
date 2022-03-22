@@ -1,5 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
+const { Op } = require("sequelize");
 const db = require("../../db/models");
 
 const { Notebook } = require("../../db/models");
@@ -7,7 +8,7 @@ const { Notebook } = require("../../db/models");
 const router = express.Router();
 
 router.get("/:userId(\\d+)", asyncHandler(async (req, res) => {
-	const userId = req.params.userId;
+	const { userId } = req.params;
 	const notebooks = await Notebook.findAll({
 		where: { userId },
 		include: db.User
@@ -18,15 +19,27 @@ router.get("/:userId(\\d+)", asyncHandler(async (req, res) => {
 	})
 }))
 
+router.get("/:userId(\\d+)/:searchTerm", asyncHandler(async (req, res) => {
+	const { userId, searchTerm } = req.params;
+	const notebooks = await Notebook.findAll({
+		where: { userId, title: { [Op.iLike]: `%${searchTerm}%` } },
+		include: db.User
+	});
+
+	return res.json({
+		notebooks
+	})
+}))
+
 router.post("/", asyncHandler(async (req, res) => {
 	const { userId } = req.body;
 	const notebook = await Notebook.create({
 		userId,
-		title: ""
-	})
+		title: "Untitled Notebook"
+	}, { include: db.User })
 
 	return res.json({
-		notebook
+		notebook: await notebook.reload()
 	})
 }))
 

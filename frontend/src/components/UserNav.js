@@ -33,7 +33,12 @@ export default function UserNav({ userId }) {
 					}}>Sign Out</button>
 				</div>
 			</li>
-			{/* <li><input placeholder="Search..."/></li> */}
+			{/* <li>
+				<input id="search-input"
+					placeholder="Search notes..."
+					onChange={event => dispatch(searchNotes({ userId: user.id, searchTerm: event.target.value }))}
+				/>
+			</li> */}
 			<button id="new-note-button" onClick={e => {
 				let popup = document.querySelector("#note-creation-feedback");
 				popup.classList.remove("hidden");

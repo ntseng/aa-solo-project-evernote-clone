@@ -33,6 +33,15 @@
 	background-color: white;
 }
 
+#search-input {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 80%;
+	border-radius: 4px;
+	border: none;
+	height: 24px;
+}
+
 #new-note-button {
 	background-color: #00A82D;
 	height: 36px;

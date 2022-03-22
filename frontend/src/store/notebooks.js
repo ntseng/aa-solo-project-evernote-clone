@@ -21,6 +21,18 @@ export function fetchNotebooks({ userId }) {
 	}
 }
 
+
+export function searchNotebooks({ userId, searchTerm }) {
+	return async dispatch => {
+		const response = await csrfFetch(`/api/notebooks/${userId}/${searchTerm}`);
+
+		if (response.ok) {
+			const { notebooks } = await response.json();
+			dispatch(getNotebooks(notebooks));
+		}
+	}
+}
+
 const postNotebook = notebook => ({
 	type: ADD_NOTEBOOK,
 	notebook
@@ -94,10 +106,11 @@ export default function notebooksReducer(stateDotNotebooks = INITIAL_STATE, acti
 	let updatedState = { ...stateDotNotebooks };
 	switch (action.type) {
 		case GET_NOTEBOOKS:
+			const cleanState = {};
 			action.notebooks.forEach(notebook => {
-				updatedState[notebook.id] = notebook;
+				cleanState[notebook.id] = notebook;
 			})
-			return updatedState;
+			return cleanState;
 		case ADD_NOTEBOOK:
 		case EDIT_NOTEBOOK:
 			updatedState[action.notebook.id] = action.notebook;
