@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { createNotebook, fetchNotebooks } from "../store/notebooks";
+import { createNotebook, fetchNotebooks, trashNotebook } from "../store/notebooks";
 import { searchNotebooks } from "../store/notebooks";
 import "./css/Notebooks.css";
 
@@ -21,7 +21,7 @@ export default function Notebooks({ userId }) {
 		<div id="notebooks-page">
 			<div id="notebook-heading">
 				<div id="notebooks-title" >Notebooks</div>
-				<div>
+				<div id="notebook-search-border">
 					<input id="notebook-search"
 						placeholder="Find notebooks..."
 						onChange={event => dispatch(searchNotebooks({ userId, searchTerm: event.target.value }))}
@@ -40,16 +40,16 @@ export default function Notebooks({ userId }) {
 						<th className="even-row title-cell">Title</th>
 						<th className="even-row author-cell">Created By</th>
 						<th className="even-row update-cell">Updated</th>
+						<th className="even-row actions-cell">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					{notebooks ? Object.values(notebooks).map((notebook, index) => (
 						<tr className={index % 2 ? "even-row" : "odd-row"} key={index}>
-							<td className="title-cell">
-								<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
-							</td>
+							<td className="title-cell"><Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link></td>
 							<td className="author-cell">{notebook.User.username}</td>
 							<td className="update-cell">{new Date(notebook.updatedAt).toDateString()}</td>
+							<td className="actions-cell"><button className="list-button" title="Delete Notebook" onClick={e => dispatch(trashNotebook({ notebookId: notebook.id }))}><i className="fas fa-solid fa-trash-can" /></button></td>
 						</tr>)) : "No notebooks yet..."}
 				</tbody>
 			</table>
