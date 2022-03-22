@@ -22,7 +22,8 @@ router.get("/:userId(\\d+)", asyncHandler(async (req, res) => {
 router.get("/:userId(\\d+)/:searchTerm", asyncHandler(async (req, res) => {
 	const { userId, searchTerm } = req.params;
 	const notebooks = await Notebook.findAll({
-		where: { userId, title: { [Op.iLike]: `%${searchTerm}$` } }
+		where: { userId, title: { [Op.iLike]: `%${searchTerm}%` } },
+		include: db.User
 	});
 
 	return res.json({
@@ -34,11 +35,11 @@ router.post("/", asyncHandler(async (req, res) => {
 	const { userId } = req.body;
 	const notebook = await Notebook.create({
 		userId,
-		title: ""
-	})
+		title: "Untitled Notebook"
+	}, { include: db.User })
 
 	return res.json({
-		notebook
+		notebook: await notebook.reload()
 	})
 }))
 

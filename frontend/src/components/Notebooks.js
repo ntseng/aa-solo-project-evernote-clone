@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchNotebooks } from "../store/notebooks";
+import { createNotebook, fetchNotebooks } from "../store/notebooks";
+import { searchNotebooks } from "../store/notebooks";
 import "./css/Notebooks.css";
 
 export default function Notebooks({ userId }) {
@@ -21,12 +22,17 @@ export default function Notebooks({ userId }) {
 			<div id="notebook-heading">
 				<div id="notebooks-title" >Notebooks</div>
 				<div>
-					<input id="notebook-search" placeholder="Find notebooks..." />
+					<input id="notebook-search"
+						placeholder="Find notebooks..."
+						onChange={event => dispatch(searchNotebooks({ userId, searchTerm: event.target.value }))}
+					/>
 				</div>
 			</div>
 			<div id="notebook-tablehead">
 				<div>{Object.values(notebooks).length} notebooks</div>
-				<button id="new-notebook-button"><i className="fas fa-solid fa-book" /> New Notebook</button>
+				<button id="new-notebook-button"
+					onClick={e => dispatch(createNotebook({ userId }))}
+				><i className="fas fa-solid fa-book" /> New Notebook</button>
 			</div>
 			<table>
 				<thead>
