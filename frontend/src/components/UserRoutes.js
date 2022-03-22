@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom"
 import Notebooks from "./Notebooks";
@@ -21,7 +22,7 @@ export default function UserRoutes() {
 						<UserPage />
 					</div>)}
 				</Route>
-				<Route path="/notes">
+				<Route path={["/notes", "/notebooks/:notebookId"]}>
 					{user && (<div id="main-container">
 						<UserNav userId={user.id} />
 						<NotesNav userId={user.id} />

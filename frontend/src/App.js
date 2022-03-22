@@ -35,7 +35,7 @@ function App() {
 					<Route path="/signup">
 						<AuthContainer newAccount={true} />
 					</Route>
-					<Route exact path={["/user", "/notes", "/notebooks"]}>
+					<Route exact path={["/user", "/notes", "/notebooks", "/notebooks/:id"]}>
 						<UserRoutes />
 					</Route>
 					<Route>
