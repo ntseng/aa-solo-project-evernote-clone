@@ -86,7 +86,7 @@
 }
 
 #user-page {
-	background-image: url("/images/home-background.jpg");
+	background-image: url("/public/images/home-background.jpg");
 	background-size: 100% 90%;
 	width: 100%;
 	margin-top: -10%;
