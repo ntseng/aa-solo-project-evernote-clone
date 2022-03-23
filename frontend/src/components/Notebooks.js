@@ -46,7 +46,7 @@ export default function Notebooks({ userId }) {
 				<tbody>
 					{notebooks ? Object.values(notebooks).map((notebook, index) => (
 						<tr className={index % 2 ? "even-row" : "odd-row"} key={index}>
-							<td className="title-cell"><Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link></td>
+							<td className="title-cell"><Link className="notebook-link" to={`/notebooks/${notebook.id}`}>{notebook.title}</Link></td>
 							<td className="author-cell">{notebook.User.username}</td>
 							<td className="update-cell">{new Date(notebook.updatedAt).toDateString()}</td>
 							<td className="actions-cell"><button className="list-button" title="Delete Notebook" onClick={e => dispatch(trashNotebook({ notebookId: notebook.id }))}><i className="fas fa-solid fa-trash-can" /></button></td>
