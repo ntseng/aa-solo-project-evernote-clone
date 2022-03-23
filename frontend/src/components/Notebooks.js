@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { createNotebook, fetchNotebooks, trashNotebook } from "../store/notebooks";
+import { Modal } from "../context/Modal";
+import { createNotebook, fetchNotebooks } from "../store/notebooks";
 import { searchNotebooks } from "../store/notebooks";
+import { hideModal, showModal } from "../store/selected";
+import DeleteNotebookModal from "./DeleteNotebookModal";
+import RenameNotebookModal from "./RenameNotebookModal";
 import "./css/Notebooks.css";
 
 export default function Notebooks({ userId }) {
 	const dispatch = useDispatch();
 	const notebooks = useSelector(state => state.notebooks);
+	const modal = useSelector(state => state.selected.modal);
 
 	useEffect(() => {
 		document.title = "Notebooks - Evernote Clone";
@@ -16,6 +21,14 @@ export default function Notebooks({ userId }) {
 	useEffect(() => {
 		dispatch(fetchNotebooks({ userId }));
 	}, [dispatch, userId])
+
+	function openModal(modalName) {
+		dispatch(showModal(modalName));
+	}
+
+	function closeModal(e) {
+		dispatch(hideModal());
+	}
 
 	return (
 		<div id="notebooks-page">
@@ -46,13 +59,26 @@ export default function Notebooks({ userId }) {
 				<tbody>
 					{notebooks ? Object.values(notebooks).map((notebook, index) => (
 						<tr className={index % 2 ? "even-row" : "odd-row"} key={index}>
-							<td className="title-cell"><Link className="notebook-link" to={`/notebooks/${notebook.id}`}>{notebook.title}</Link></td>
+							<td className="title-cell"><i className="fas fa-solid fa-book" /> <Link className="notebook-link" to={`/notebooks/${notebook.id}`}>{notebook.title}</Link></td>
 							<td className="author-cell">{notebook.User.username}</td>
 							<td className="update-cell">{new Date(notebook.updatedAt).toDateString()}</td>
-							<td className="actions-cell"><button className="list-button" title="Delete Notebook" onClick={e => dispatch(trashNotebook({ notebookId: notebook.id }))}><i className="fas fa-solid fa-trash-can" /></button></td>
+							<td className="actions-cell">
+								<button className="list-button" title="Rename Notebook" onClick={e => openModal(`renameNotebook/${notebook.id}`)}><i className="fas fa-solid fa-pencil" /></button>
+								<button className="list-button" title="Delete Notebook" onClick={e => openModal(`deleteNotebook/${notebook.id}`)}><i className="fas fa-solid fa-trash-can" /></button>
+							</td>
 						</tr>)) : "No notebooks yet..."}
 				</tbody>
 			</table>
-		</div>
+			{modal && modal.startsWith("renameNotebook") && (
+				<Modal onClose={closeModal}>
+					<RenameNotebookModal notebookId={modal.split("/")[1]} />
+				</Modal>
+			)}
+			{modal && modal.startsWith("deleteNotebook") && (
+				<Modal onClose={closeModal}>
+					<DeleteNotebookModal notebookId={modal.split("/")[1]} />
+				</Modal>
+			)}
+		</div >
 	)
 }

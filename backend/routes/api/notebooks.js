@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const { Op } = require("sequelize");
 const db = require("../../db/models");
 
-const { Notebook } = require("../../db/models");
+const { Notebook, Note } = require("../../db/models");
 
 const router = express.Router();
 
@@ -45,7 +45,7 @@ router.post("/", asyncHandler(async (req, res) => {
 
 router.put("/", asyncHandler(async (req, res) => {
 	const { notebookId, title } = req.body;
-	const notebook = await Notebook.findByPk(notebookId);
+	const notebook = await Notebook.findByPk(notebookId, { include: db.User });
 	if (notebook) {
 		await notebook.update({
 			title
@@ -64,6 +64,13 @@ router.delete("/", asyncHandler(async (req, res) => {
 	const { notebookId } = req.body;
 	const notebook = await Notebook.findByPk(notebookId);
 	await notebook.destroy();
+
+	const notes = await Note.findAll({
+		where: { notebookId }
+	})
+	notes.forEach(async note => {
+		await note.update({ notebookId: null })
+	})
 
 	return res.json({
 		notebookId
