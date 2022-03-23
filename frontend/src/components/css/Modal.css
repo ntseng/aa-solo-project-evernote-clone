@@ -46,6 +46,15 @@
 	cursor: pointer;
 }
 
+#modal-input {
+	width: 300px;
+	margin-top: 5px;
+	border: 1px solid #d0d3d6;
+	padding: 5px 6px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
 #modal-instructions {
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -75,6 +84,19 @@
 
 #modal-delete-button {
 	background-color: #e54e40;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 15px;
+	border-radius: 4px;
+	padding: 10px 15px;
+	font-weight: 400;
+	margin: 5px;
+}
+
+#modal-add-button {
+	background-color: #00a82d;
 	color: white;
 	border: none;
 	cursor: pointer;
