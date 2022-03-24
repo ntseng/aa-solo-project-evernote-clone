@@ -6,10 +6,12 @@ import { editNote } from "../store/notes";
 import { hideModal, showModal } from "../store/selected";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import StarterKit from "@tiptap/starter-kit";
+import { fetchNotebooks } from "../store/notebooks";
 
-export default function NotesEditor() {
+export default function NotesEditor({ userId }) {
 	const dispatch = useDispatch();
 	let note = useSelector(state => state.selected.note);
+	const notebooks = useSelector(state => state.notebooks);
 	const modal = useSelector(state => state.selected.modal);
 
 	const [title, setTitle] = useState(note.title);
@@ -18,12 +20,16 @@ export default function NotesEditor() {
 		extensions: [
 			StarterKit
 		],
-		onUpdate: ({ editor }) => { dispatch(editNote({ noteId: note.id, notebookId: null, content: editor.getHTML(), plainContent: editor.getText() })) }
+		onUpdate: ({ editor }) => { dispatch(editNote({ noteId: note.id, content: editor.getHTML(), plainContent: editor.getText() })) }
 	})
 
 	useEffect(() => {
 		document.title = "Notes - Evernote Clone";
 	}, [])
+
+	useEffect(() => {
+		dispatch(fetchNotebooks({ userId }))
+	}, [dispatch, userId])
 
 	useEffect(() => {
 		setTitle(note.title);
@@ -36,7 +42,7 @@ export default function NotesEditor() {
 				disabled={!note}
 				value={title}
 				onChange={e => setTitle(e.target.value)}
-				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title }))}
+				onBlur={e => dispatch(editNote({ noteId: note.id, title }))}
 			/>
 			<div id="content-textarea" >
 				<p id="editor-actions">
@@ -44,25 +50,25 @@ export default function NotesEditor() {
 						onClick={() => editor.chain().focus().toggleBold().run()}
 						className={`editor-button${editor?.isActive('bold') ? ' is-active' : ''}`}
 					>
-						<i class="fa-solid fa-bold" />
+						<i className="fa-solid fa-bold" />
 					</button>
 					<button title="Italics"
 						onClick={() => editor.chain().focus().toggleItalic().run()}
 						className={`editor-button${editor?.isActive('italic') ? ' is-active' : ''}`}
 					>
-						<i class="fa-solid fa-italic" />
+						<i className="fa-solid fa-italic" />
 					</button>
 					<button title="Strikethrough"
 						onClick={() => editor.chain().focus().toggleStrike().run()}
 						className={`editor-button${editor?.isActive('strike') ? ' is-active' : ''}`}
 					>
-						<i class="fa-solid fa-strikethrough" />
+						<i className="fa-solid fa-strikethrough" />
 					</button>
 					<button title="Clear Formatting"
 						onClick={() => editor.chain().focus().unsetAllMarks().run()}
 						className="editor-button"
 					>
-						<i class="fa-solid fa-text-slash" />
+						<i className="fa-solid fa-text-slash" />
 					</button>
 					<button title="Heading 1"
 						onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
@@ -104,25 +110,25 @@ export default function NotesEditor() {
 						onClick={() => editor.chain().focus().toggleBulletList().run()}
 						className={`editor-button${editor?.isActive('bulletList') ? ' is-active' : ''}`}
 					>
-						<i class="fa-solid fa-list" />
+						<i className="fa-solid fa-list" />
 					</button>
 					<button title="Ordered List"
 						onClick={() => editor.chain().focus().toggleOrderedList().run()}
 						className={`editor-button${editor?.isActive('orderedList') ? ' is-active' : ''}`}
 					>
-						<i class="fa-solid fa-list-ol" />
+						<i className="fa-solid fa-list-ol" />
 					</button>
 					<button title="Blockquote"
 						onClick={() => editor.chain().focus().toggleBlockquote().run()}
 						className={`editor-button${editor?.isActive('blockquote') ? ' is-active' : ''}`}
 					>
-						<i class="fa-solid fa-quote-left" />
+						<i className="fa-solid fa-quote-left" />
 					</button>
 					<button title="Horizontal Rule"
 						onClick={() => editor.chain().focus().setHorizontalRule().run()}
 						className="editor-button"
 					>
-						<i class="fa-solid fa-ruler-horizontal" />
+						<i className="fa-solid fa-ruler-horizontal" />
 					</button>
 					<button title="Hard Break"
 						onClick={() => editor.chain().focus().setHardBreak().run()}
@@ -134,23 +140,40 @@ export default function NotesEditor() {
 						onClick={() => editor.chain().focus().undo().run()}
 						className="editor-button"
 					>
-						<i class="fa-solid fa-rotate-left" />
+						<i className="fa-solid fa-rotate-left" />
 					</button>
 					<button title="Redo	"
 						onClick={() => editor.chain().focus().redo().run()}
 						className="editor-button"
 					>
-						<i class="fa-solid fa-rotate-right" />
+						<i className="fa-solid fa-rotate-right" />
 					</button>
 				</p>
 				<EditorContent editor={editor} />
 			</div>
-			<button id="delete" className="delete-style"
-				disabled={!note}
-				onClick={e => {
-					e.stopPropagation();
-					dispatch(showModal("confirmDelete"));
-				}}>Delete</button>
+			<div>
+				<button id="delete" className="delete-style"
+					disabled={!note}
+					onClick={e => {
+						e.stopPropagation();
+						dispatch(showModal("confirmDelete"));
+					}}>Delete</button>
+				<select id="notebook-select"
+					onChange={e => {
+						if (e.target.value !== "placeholder") {
+							dispatch(editNote({ noteId: note.id, notebookId: e.target.value }))
+						}
+					}}
+					value={note.notebookId || "placeholder"}>
+					{
+						[(<option key="placeholder" value="placeholder">Choose a notebook...</option>), ...Object.values(notebooks).map(notebook => {
+							return (
+								<option key={notebook.id} value={notebook.id}>{notebook.title}</option>
+							)
+						})]
+					}
+				</select>
+			</div>
 			{modal === "confirmDelete" && (
 				<Modal onClose={e => dispatch(hideModal())}>
 					<ConfirmDeleteModal noteId={note.id} />

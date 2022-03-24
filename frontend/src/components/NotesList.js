@@ -19,7 +19,7 @@ export default function NotesList() {
 
 	return (
 		<div id="notes-list">
-			<div>NOTES</div>
+			<div id="notes-title">NOTES</div>
 			<div id="note-item-container">
 				{notes.map((note, index) => <NotesListItem key={index} note={note} />)}
 			</div>

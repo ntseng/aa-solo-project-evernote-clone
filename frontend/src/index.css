@@ -117,6 +117,16 @@
 
 #notes-list {
 	margin-left: 25px;
+	margin-right: 25px;
+	border: 1px solid black;
+	padding: 20px;
+	border-radius: 4px;
+	background-color: cornsilk;
+}
+
+#notes-title {
+	font-weight: 600;
+	margin-bottom: 5px;
 }
 
 #note-item-container {
@@ -125,6 +135,17 @@
 
 .note-item {
 	border: 1px solid grey;
+	list-style: none;
+	height: 120px;
+	border: 2px solid #cccccc;
+	background-color: #ffffff;
+	margin: 2px 0px;
+	padding: 10px;
+	width: 300px;
+}
+.note-item:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 2px grey;
 }
 
 #notes-nav {
@@ -136,22 +157,6 @@
 	transform: translate(0%, 500%);
 	width: 380px;
 	text-align: center;
-}
-
-.note-item {
-	list-style: none;
-	height: 120px;
-	width: 100%;
-	border: 2px solid #cccccc;
-	background-color: #ffffff;
-	margin: 2px 0px;
-	padding: 10px;
-	max-width: 300px;
-}
-
-.note-item:hover {
-	cursor: pointer;
-	box-shadow: 1px 1px 2px grey;
 }
 
 .note-title {
@@ -202,10 +207,14 @@
 }
 
 .editor-button {
+	cursor: pointer;
 	font-size: 26px;
 	margin: 3px;
 	border: 2px solid black;
 	border-radius: 4px;
+}
+.editor-button:hover {
+	background-color: grey;
 }
 
 .is-active {
