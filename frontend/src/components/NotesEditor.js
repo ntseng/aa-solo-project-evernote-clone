@@ -39,100 +39,110 @@ export default function NotesEditor() {
 				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title }))}
 			/>
 			<div id="content-textarea" >
-				<button
-					onClick={() => editor.chain().focus().toggleBold().run()}
-					className={editor?.isActive('bold') ? 'is-active' : ''}
-				>
-					bold
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleItalic().run()}
-					className={editor?.isActive('italic') ? 'is-active' : ''}
-				>
-					italic
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleStrike().run()}
-					className={editor?.isActive('strike') ? 'is-active' : ''}
-				>
-					strike
-				</button>
-				<button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-					clear marks
-				</button>
-				<button
-					onClick={() => editor.chain().focus().setParagraph().run()}
-					className={editor?.isActive('paragraph') ? 'is-active' : ''}
-				>
-					paragraph
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-					className={editor?.isActive('heading', { level: 1 }) ? 'is-active' : ''}
-				>
-					h1
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-					className={editor?.isActive('heading', { level: 2 }) ? 'is-active' : ''}
-				>
-					h2
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-					className={editor?.isActive('heading', { level: 3 }) ? 'is-active' : ''}
-				>
-					h3
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-					className={editor?.isActive('heading', { level: 4 }) ? 'is-active' : ''}
-				>
-					h4
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-					className={editor?.isActive('heading', { level: 5 }) ? 'is-active' : ''}
-				>
-					h5
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-					className={editor?.isActive('heading', { level: 6 }) ? 'is-active' : ''}
-				>
-					h6
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleBulletList().run()}
-					className={editor?.isActive('bulletList') ? 'is-active' : ''}
-				>
-					bullet list
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleOrderedList().run()}
-					className={editor?.isActive('orderedList') ? 'is-active' : ''}
-				>
-					ordered list
-				</button>
-				<button
-					onClick={() => editor.chain().focus().toggleBlockquote().run()}
-					className={editor?.isActive('blockquote') ? 'is-active' : ''}
-				>
-					blockquote
-				</button>
-				<button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-					horizontal rule
-				</button>
-				<button onClick={() => editor.chain().focus().setHardBreak().run()}>
-					hard break
-				</button>
-				<button onClick={() => editor.chain().focus().undo().run()}>
-					undo
-				</button>
-				<button onClick={() => editor.chain().focus().redo().run()}>
-					redo
-				</button>
-				<hr />
+				<p id="editor-actions">
+					<button title="Bold"
+						onClick={() => editor.chain().focus().toggleBold().run()}
+						className={`editor-button${editor?.isActive('bold') ? ' is-active' : ''}`}
+					>
+						<i class="fa-solid fa-bold" />
+					</button>
+					<button title="Italics"
+						onClick={() => editor.chain().focus().toggleItalic().run()}
+						className={`editor-button${editor?.isActive('italic') ? ' is-active' : ''}`}
+					>
+						<i class="fa-solid fa-italic" />
+					</button>
+					<button title="Strikethrough"
+						onClick={() => editor.chain().focus().toggleStrike().run()}
+						className={`editor-button${editor?.isActive('strike') ? ' is-active' : ''}`}
+					>
+						<i class="fa-solid fa-strikethrough" />
+					</button>
+					<button title="Clear Formatting"
+						onClick={() => editor.chain().focus().unsetAllMarks().run()}
+						className="editor-button"
+					>
+						<i class="fa-solid fa-text-slash" />
+					</button>
+					<button title="Heading 1"
+						onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+						className={`editor-button${editor?.isActive('heading', { level: 1 }) ? ' is-active' : ''}`}
+					>
+						h1
+					</button>
+					<button title="Heading 2"
+						onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+						className={`editor-button${editor?.isActive('heading', { level: 2 }) ? ' is-active' : ''}`}
+					>
+						h2
+					</button>
+					<button title="Heading 3"
+						onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+						className={`editor-button${editor?.isActive('heading', { level: 3 }) ? ' is-active' : ''}`}
+					>
+						h3
+					</button>
+					<button title="Heading 4"
+						onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+						className={`editor-button${editor?.isActive('heading', { level: 4 }) ? ' is-active' : ''}`}
+					>
+						h4
+					</button>
+					<button title="Heading 5"
+						onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+						className={`editor-button${editor?.isActive('heading', { level: 5 }) ? ' is-active' : ''}`}
+					>
+						h5
+					</button>
+					<button title="Heading 6"
+						onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+						className={`editor-button${editor?.isActive('heading', { level: 6 }) ? ' is-active' : ''}`}
+					>
+						h6
+					</button>
+					<button title="Unordered List"
+						onClick={() => editor.chain().focus().toggleBulletList().run()}
+						className={`editor-button${editor?.isActive('bulletList') ? ' is-active' : ''}`}
+					>
+						<i class="fa-solid fa-list" />
+					</button>
+					<button title="Ordered List"
+						onClick={() => editor.chain().focus().toggleOrderedList().run()}
+						className={`editor-button${editor?.isActive('orderedList') ? ' is-active' : ''}`}
+					>
+						<i class="fa-solid fa-list-ol" />
+					</button>
+					<button title="Blockquote"
+						onClick={() => editor.chain().focus().toggleBlockquote().run()}
+						className={`editor-button${editor?.isActive('blockquote') ? ' is-active' : ''}`}
+					>
+						<i class="fa-solid fa-quote-left" />
+					</button>
+					<button title="Horizontal Rule"
+						onClick={() => editor.chain().focus().setHorizontalRule().run()}
+						className="editor-button"
+					>
+						<i class="fa-solid fa-ruler-horizontal" />
+					</button>
+					<button title="Hard Break"
+						onClick={() => editor.chain().focus().setHardBreak().run()}
+						className="editor-button"
+					>
+						{"<br>"}
+					</button>
+					<button title="Undo"
+						onClick={() => editor.chain().focus().undo().run()}
+						className="editor-button"
+					>
+						<i class="fa-solid fa-rotate-left" />
+					</button>
+					<button title="Redo	"
+						onClick={() => editor.chain().focus().redo().run()}
+						className="editor-button"
+					>
+						<i class="fa-solid fa-rotate-right" />
+					</button>
+				</p>
 				<EditorContent editor={editor} />
 			</div>
 			<button id="delete" className="delete-style"
