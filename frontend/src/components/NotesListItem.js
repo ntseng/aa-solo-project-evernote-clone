@@ -7,7 +7,7 @@ export default function NotesListItem({ note }) {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const userId = useSelector(state => state.session.user.id);
-	let contentPreview = note.content.slice(0, 50);
+	let contentPreview = note.plainContent.slice(0, 50);
 	if (note.content.length > 50) {
 		contentPreview += "..."
 	}
