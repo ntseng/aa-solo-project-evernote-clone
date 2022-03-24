@@ -13,14 +13,12 @@ export default function NotesEditor() {
 	const modal = useSelector(state => state.selected.modal);
 
 	const [title, setTitle] = useState(note.title);
-	const [content, setContent] = useState(note.content);
 
 	const editor = useEditor({
 		extensions: [
 			StarterKit
 		],
-		content: note.content,
-		onUpdate: ({ editor }) => setContent(editor.getJSON())
+		onUpdate: ({ editor }) => { dispatch(editNote({ noteId: note.id, notebookId: null, content: editor.getHTML(), plainContent: editor.getText() })) }
 	})
 
 	useEffect(() => {
@@ -29,9 +27,8 @@ export default function NotesEditor() {
 
 	useEffect(() => {
 		setTitle(note.title);
-		setContent(note.content);
 		editor?.commands.setContent(note.content);
-	}, [note])
+	}, [note, editor])
 
 	return (
 		<div id="editor-container" onClick={e => dispatch(hideModal())}>
@@ -39,7 +36,7 @@ export default function NotesEditor() {
 				disabled={!note}
 				value={title}
 				onChange={e => setTitle(e.target.value)}
-				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title, content }))}
+				onBlur={e => dispatch(editNote({ noteId: note.id, notebookId: null, title }))}
 			/>
 			<div id="content-textarea" >
 				<button
@@ -135,6 +132,7 @@ export default function NotesEditor() {
 				<button onClick={() => editor.chain().focus().redo().run()}>
 					redo
 				</button>
+				<hr />
 				<EditorContent editor={editor} />
 			</div>
 			<button id="delete" className="delete-style"

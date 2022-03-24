@@ -33,13 +33,14 @@ router.post("/", asyncHandler(async (req, res) => {
 }))
 
 router.put("/", asyncHandler(async (req, res) => {
-	const { noteId, notebookId, title, content } = req.body;
+	const { noteId, notebookId, title, content, plainContent } = req.body;
 	const note = await Note.findByPk(noteId);
 	if (note) {
 		await note.update({
 			notebookId,
-			title,
-			content
+			title: title ?? note.title,
+			content: content ?? note.content,
+			plainContent: plainContent ?? note.plainContent
 		});
 		note.save();
 
