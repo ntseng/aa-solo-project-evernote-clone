@@ -27,7 +27,7 @@ export default function UserRoutes() {
 						<UserNav userId={user.id} />
 						<NotesNav userId={user.id} />
 						{currentNote ? (<>
-							<NotesEditor />
+							<NotesEditor userId={user?.id} />
 						</>) : (<div id="placeholder-container"></div>)}
 					</div>)}
 				</Route>

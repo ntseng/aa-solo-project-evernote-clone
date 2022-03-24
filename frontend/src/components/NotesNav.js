@@ -8,7 +8,7 @@ import NoteItem from "./NoteItem";
 export default function NotesNav({ userId }) {
 	const { notebookId } = useParams();
 	const dispatch = useDispatch();
-	const notes = useSelector(state => Object.values(state.notes).filter(note => !notebookId || note.notebookId === notebookId));
+	const notes = useSelector(state => Object.values(state.notes).filter(note => !notebookId || note.notebookId === Number(notebookId)));
 
 	useEffect(() => {
 		dispatch(fetchNotes({ id: userId })).then(firstNote => {
