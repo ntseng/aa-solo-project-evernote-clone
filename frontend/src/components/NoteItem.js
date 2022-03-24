@@ -1,10 +1,11 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { showNote } from "../../store/notes";
+import { showNote } from "../store/selected";
 
 export default function NoteItem({ note }) {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.session.user);
-	let contentPreview = note.content.slice(0, 50);
+	let contentPreview = note.plainContent.slice(0, 50);
 	if (note.content.length > 50) {
 		contentPreview += "..."
 	}

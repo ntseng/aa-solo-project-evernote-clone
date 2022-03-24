@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function HeroRow() {
 	return (
 		<div id="hero-container" className="centered">

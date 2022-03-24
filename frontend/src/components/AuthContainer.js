@@ -1,8 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import LoginFormPage from "../LoginFormPage";
-import SignUpFormPage from "../SignUpFormPage";
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 
-import "./AuthContainer.css";
+import "./css/AuthContainer.css";
 
 export default function AuthContainer({ newAccount }) {
 	return (
@@ -13,7 +14,7 @@ export default function AuthContainer({ newAccount }) {
 						<div className="minimal-frame">
 							<div className="minimal-wrapper">
 								<div className="minimal-body">
-									{newAccount ? <SignUpFormPage /> : <LoginFormPage />}
+									{newAccount ? <SignUpForm /> : <LoginForm />}
 								</div>
 							</div>
 							<div className="footer wrapper">

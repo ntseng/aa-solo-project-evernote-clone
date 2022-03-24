@@ -1,14 +1,15 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom"
-import NotesEditor from "../Notes/NotesEditor";
-import NotesNav from "../Notes/NotesNav"
-import UserNav from "../UserNav"
-import UserPage from "../UserPage"
+import Notebooks from "./Notebooks";
+import NotesEditor from "./NotesEditor";
+import NotesNav from "./NotesNav"
+import UserNav from "./UserNav"
+import UserPage from "./UserPage"
 
 export default function UserRoutes() {
 	const user = useSelector(state => state.session.user);
-	const currentNote = useSelector(state => state.notes.currentNote);
-	const hasCurrentNote = !!currentNote && !!Object.entries(currentNote).length;
+	const currentNote = useSelector(state => state.selected.note);
 
 	if (!user) {
 		return (<Redirect to="/" />)
@@ -21,13 +22,19 @@ export default function UserRoutes() {
 						<UserPage />
 					</div>)}
 				</Route>
-				<Route path="/notes">
+				<Route path={["/notes", "/notebooks/:notebookId"]}>
 					{user && (<div id="main-container">
 						<UserNav userId={user.id} />
 						<NotesNav userId={user.id} />
-						{hasCurrentNote ? (<>
-							<NotesEditor />
+						{currentNote ? (<>
+							<NotesEditor userId={user?.id} />
 						</>) : (<div id="placeholder-container"></div>)}
+					</div>)}
+				</Route>
+				<Route path="/notebooks">
+					{user && (<div id="main-container">
+						<UserNav userId={user.id} />
+						<Notebooks userId={user.id} />
 					</div>)}
 				</Route>
 			</Switch>

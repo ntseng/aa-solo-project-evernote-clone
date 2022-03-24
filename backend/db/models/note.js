@@ -4,11 +4,12 @@ module.exports = (sequelize, DataTypes) => {
 		userId: DataTypes.INTEGER,
 		notebookId: DataTypes.INTEGER,
 		title: DataTypes.STRING,
-		content: DataTypes.TEXT
+		content: DataTypes.TEXT,
+		plainContent: DataTypes.TEXT
 	}, {});
 	Note.associate = function (models) {
 		// associations can be defined here
-		Note.belongsTo(models.User, { foreignKey: "userId"});
+		Note.belongsTo(models.User, { foreignKey: "userId" });
 	};
 	return Note;
 };

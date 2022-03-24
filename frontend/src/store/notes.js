@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const GET_NOTES = "notes/get";
-const SHOW_NOTE = "notes/display";
 const ADD_NOTE = "notes/add";
 const EDIT_NOTE = "notes/edit";
 const DELETE_NOTE = "notes/delete";
@@ -18,22 +17,7 @@ export function fetchNotes({ id }) {
 		if (response.ok) {
 			const { notes } = await response.json();
 			dispatch(getNotes(notes));
-		}
-	}
-}
-
-const displayNote = note => ({
-	type: SHOW_NOTE,
-	note
-})
-
-export function showNote({ userId, noteId }) {
-	return async dispatch => {
-		const response = await csrfFetch(`/api/notes/${userId}`);
-
-		if (response.ok) {
-			const { notes } = await response.json();
-			dispatch(displayNote(notes.find(note => note.id === noteId)));
+			return notes[0];
 		}
 	}
 }
@@ -57,6 +41,7 @@ export function createNote({ userId, notebookId }) {
 		if (response.ok) {
 			const { note } = await response.json();
 			dispatch(postNote(note));
+			return note;
 		}
 	}
 }
@@ -66,7 +51,7 @@ const putNote = note => ({
 	note
 })
 
-export function editNote({ noteId, notebookId, title, content }) {
+export function editNote({ noteId, notebookId, title, content, plainContent }) {
 	return async dispatch => {
 		const response = await csrfFetch("/api/notes", {
 			method: "PUT",
@@ -75,7 +60,8 @@ export function editNote({ noteId, notebookId, title, content }) {
 				noteId,
 				notebookId,
 				title,
-				content
+				content,
+				plainContent
 			})
 		})
 
@@ -115,23 +101,15 @@ export default function notesReducer(stateDotNotes = {}, action) {
 			action.notes.forEach(note => {
 				updatedState[note.id] = note;
 			})
-			if (!(updatedState.currentNote && Object.entries(updatedState.currentNote).length)) {
-				updatedState.currentNote = action.notes[0];
-			}
 			return updatedState;
 		case ADD_NOTE:
 			updatedState[action.note.id] = action.note;
-			updatedState.currentNote = action.note;
 			return updatedState;
 		case EDIT_NOTE:
 			updatedState[action.note.id] = action.note;
 			return updatedState;
 		case DELETE_NOTE:
-			delete updatedState[action.noteId]
-			updatedState.currentNote = {};
-			return updatedState;
-		case SHOW_NOTE:
-			updatedState.currentNote = action.note;
+			delete updatedState[action.noteId];
 			return updatedState;
 		default:
 			return stateDotNotes;

@@ -1,0 +1,109 @@
+#modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#modal-background {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: grey;
+	opacity: 0.5;
+}
+
+#modal-content {
+	position: absolute;
+	background-color: white;
+	border-radius: 6px;
+	max-height: calc(100% - 48px);
+	max-width: calc(100% - 48px);
+	min-width: auto;
+}
+
+#modal-container {
+	box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	border-radius: 6px;
+	min-height: 200px;
+}
+
+#modal-title-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+#modal-x-button {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+#modal-input {
+	width: 300px;
+	margin-top: 5px;
+	border: 1px solid #d0d3d6;
+	padding: 5px 6px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+#modal-instructions {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#modal-button-container {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+	margin-top: 0;
+	width: 100%;
+	padding: 15px;
+}
+
+#modal-cancel-button {
+	background-color: transparent;
+	color: #737373;
+	border: 1px solid grey;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 15px;
+	border-radius: 4px;
+	padding: 10px 15px;
+	font-weight: 400;
+	margin: 5px;
+}
+
+#modal-delete-button {
+	background-color: #e54e40;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 15px;
+	border-radius: 4px;
+	padding: 10px 15px;
+	font-weight: 400;
+	margin: 5px;
+}
+
+#modal-add-button {
+	background-color: #00a82d;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 15px;
+	border-radius: 4px;
+	padding: 10px 15px;
+	font-weight: 400;
+	margin: 5px;
+}

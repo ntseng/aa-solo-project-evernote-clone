@@ -4,10 +4,10 @@ import { Route, Switch } from "react-router-dom";
 
 import { restoreSession } from "./store/session";
 import Navigation from "./components/Navigation";
-import ValueProp from "./components/Landing/valueProp";
-import HeroRow from "./components/Landing/heroRow";
+import ValueProp from "./components/ValueProp";
+import HeroRow from "./components/HeroRow";
 import AuthContainer from "./components/AuthContainer";
-import CalendarBanner from "./components/Navigation/CalendarBanner";
+import CalendarBanner from "./components/CalendarBanner";
 import UserRoutes from "./components/UserRoutes";
 import NotFound from "./components/NotFound";
 
@@ -35,7 +35,7 @@ function App() {
 					<Route path="/signup">
 						<AuthContainer newAccount={true} />
 					</Route>
-					<Route exact path={["/user", "/notes"]}>
+					<Route exact path={["/user", "/notes", "/notebooks", "/notebooks/:id"]}>
 						<UserRoutes />
 					</Route>
 					<Route>

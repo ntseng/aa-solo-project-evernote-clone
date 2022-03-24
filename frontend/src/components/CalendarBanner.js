@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function CalendarBanner() {
 	return (
 		<div id="calendar-banner">
